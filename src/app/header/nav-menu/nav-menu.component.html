@@ -1,0 +1,10 @@
+<nav>
+  <ul class="nav-menu">
+    <li *ngFor="let route of routes" routerLinkActive="active">
+      <a  *ngIf="route.path" routerLink={{route.path}}>
+        {{route.name}}
+      </a>
+      <app-sub-menu *ngIf="route.sub_links" [routes]="route"></app-sub-menu>
+    </li>
+  </ul>
+</nav>

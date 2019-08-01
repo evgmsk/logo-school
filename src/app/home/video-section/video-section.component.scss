@@ -1,0 +1,21 @@
+@import "../../../assets/scss/mixin";
+
+.video-section {
+  @include flex();
+  background: url(../../../assets/images/campus1.jpg) no-repeat center;
+  background-size: cover;
+  height: 100vh;
+  max-height: pxToRem(700);
+  i {
+    display: block;
+    font-size: pxToRem(60);
+    margin: 0 pxToRem(40);
+    cursor: pointer;
+  }
+  h2 {
+    font-family: Roboto, sans-serif;
+    font-weight: 300;
+    font-size: pxToRem(60);
+
+  }
+}

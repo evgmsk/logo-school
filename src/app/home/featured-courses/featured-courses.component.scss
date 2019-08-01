@@ -1,0 +1,29 @@
+@import "../../../assets/scss/mixin";
+
+.home-course-section {
+  @include flex(center, center, column);
+  font-family: Roboto, sans-serif;
+  color: #252525;
+  h2 {
+    margin-top: pxToRem(110);
+    font-weight: 300;
+    font-size: pxToRem(48);
+    color: #252525;
+  }
+  .course-wrapper {
+    @include flex(center, center)
+  }
+  .all-courses-link {
+    color: #252525;
+    text-decoration: none;
+    //height: pxToRem(60);
+    font-size: pxToRem(16);
+    font-weight: 300;
+    line-height: pxToRem(30);
+    text-transform: uppercase;
+    border-bottom: 2px solid #252525;
+    border-top: 2px solid #252525;
+    padding: pxToRem(15) pxToRem(30);
+    margin: pxToRem(80) auto pxToRem(120);
+  }
+}

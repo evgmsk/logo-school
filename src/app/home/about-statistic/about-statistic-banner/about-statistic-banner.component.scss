@@ -1,0 +1,14 @@
+@import "../../../../assets/scss/mixin";
+
+.stats-banner {
+  @include flex(space-around, center);
+  background: #6cb051;
+  border-radius: 3px;
+  color: #252525;
+  width: pxToRem(270);
+  height: pxToRem(150);
+  margin: 0 pxToRem(15);
+  i {
+    color: #5a8f45
+  }
+}

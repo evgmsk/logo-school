@@ -1,0 +1,21 @@
+@import "../../../assets/scss/mixin";
+
+.nav-menu {
+  font-size: pxToRem(16);
+  color: #959595;
+  @debug pxToRem(16);
+  display: flex;
+  li {
+    display: flex;
+    align-items: center;
+    list-style-type: none;
+    margin: 0 pxToRem(10);
+  }
+  a {
+    @include nav-item();
+  }
+  nav {
+    display: flex;
+  }
+}
+

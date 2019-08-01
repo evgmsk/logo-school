@@ -1,0 +1,8 @@
+<div class="course-cart" [ngClass]="image">
+  <div class="course-info">
+    <p class="course-start-date"><i class="material-icons">calendar_today</i>{{course.date | date:'MMMM d yyyy'}}</p>
+    <p class="course-title">{{course.name}}</p>
+    <p class="course-description">{{course.description}}</p>
+  </div>
+  <ng-content></ng-content>
+</div>

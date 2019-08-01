@@ -1,0 +1,13 @@
+@import "../../assets/scss/mixin";
+
+footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: pxToRem(470);
+  background-color: #262c33;
+  .footer-body {
+    height: 100%;
+    @include flex(space-around);
+  }
+}

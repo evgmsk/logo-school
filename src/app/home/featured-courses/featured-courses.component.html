@@ -1,0 +1,9 @@
+<section class="home-course-section">
+  <h2>Our Featured Courses</h2>
+  <p>some text</p>
+  <div class="course-wrapper">
+    <app-course-cart *ngFor="let cart of (carts | async).featuredCourses" [course]="cart"></app-course-cart>
+  </div>
+  <a class="all-courses-link" routerLink="/courses">View all courses</a>
+  <!--<button class="all-courses-button" (click)="redirectToCourses()">View all courses</button>-->
+</section>

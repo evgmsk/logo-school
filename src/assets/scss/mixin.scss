@@ -1,0 +1,27 @@
+@function pxToRem($size) {
+  $res: $size / 16;
+  @return #{$res}rem;
+}
+
+@mixin nav-item ($size: inherit, $height: 100, $color: inherit, $border: 3px solid transparent, $hover-color: #6cb051) {
+  font-size: $size;
+  height: pxToRem($height);
+  line-height: pxToRem($height);
+  color: $color;
+  border-bottom: $border;
+  text-decoration: none;
+  box-sizing: border-box;
+  text-transform: uppercase;
+  outline: none;
+  transition: all .4s;
+  &:hover, &.active, &:focus {
+    border-bottom-color: $hover-color;
+  }
+}
+
+@mixin flex($justify: center, $align: center, $direction: row) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+}
