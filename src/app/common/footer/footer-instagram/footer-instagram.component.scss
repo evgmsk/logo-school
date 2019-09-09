@@ -1,0 +1,22 @@
+@import "../../../../assets/scss/mixin";
+
+.photo-wrapper {
+  @include flex(flex-start, flex-start);
+  flex-wrap: wrap;
+}
+.footer-instagram-main-link {
+  display: block;
+  margin-top: pxToRem(10);
+  color: #959595;
+}
+@for $i from 0 to 6 {
+  .inst#{$i} {
+    background: url('../../../../assets/images/inst#{$i}.jpg') no-repeat center;
+    width: pxToRem(80);
+    height: pxToRem(80);
+    margin: pxToRem(5);
+    &:first-of-type, &:nth-of-type(4) {
+      margin-left: 0;
+    }
+  }
+}

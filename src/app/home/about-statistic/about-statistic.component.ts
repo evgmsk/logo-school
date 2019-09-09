@@ -11,11 +11,11 @@ import {StatBanner} from '../../interfaces/stat-banner.interface';
 })
 
 export class AboutStatisticComponent implements OnInit {
-  schoolStats: Observable<{schoolStats: StatBanner[]}>;
-  constructor(private store: Store<{statReducers: {schoolStats: StatBanner[]}}>) { }
+  schoolStats: Observable<StatBanner[]>;
+  constructor(private store: Store<{schoolStats: StatBanner[]}>) { }
 
   ngOnInit() {
-    this.schoolStats = this.store.select('statReducers');
+    this.schoolStats = this.store.select('schoolStats');
   }
 
 }

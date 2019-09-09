@@ -1,0 +1,32 @@
+<section class="home-events-section">
+  <h2 class="section-title">Upcoming Events</h2>
+  <p class="section-description">some text</p>
+  <div class="events-wrapper">
+    <app-media-card
+      *ngFor="let event of (events | async) let i=index"
+      [card]="event"
+      [index]="i"
+      [className]="'event-card'"
+      [ngClass]="{'show-details': show[i]}"
+      [imgLink]="true"
+    >
+      <button type="button" class="event-details-control" (click)="onShowDetails(i)" >
+        <span>+</span>
+      </button>
+      <div class="event-info" #b tabindex="0">
+        <p *ngFor="let contact of event.contacts" class="event-contact">
+          <i class={{icons[contact.type]}}></i>
+          {{contact.value}}
+        </p>
+        <p>
+          <i class="fa fa-map-marker"></i>
+          {{event.occurrence}}
+        </p>
+        <p>
+          <i class="fa fa-user"></i>
+          {{event.official}}
+        </p>
+      </div>
+    </app-media-card>
+  </div>
+</section>

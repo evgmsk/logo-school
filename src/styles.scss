@@ -1,1 +1,64 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab: 300,400|Roboto:200,300,400,700&display=swap&subset=cyrillic');
+@import "./assets/scss/common-classes";
+@import "assets/scss/reset";
+
+html {
+  font-family: Roboto, sans-serif;
+  font-size: 13px;
+  width: auto;
+  @media (min-width: 700px) {
+    font-size: 14px;
+  }
+  @media (min-width: 900px) {
+    font-size: 15px;
+  }
+  @media (min-width: 1200px) {
+    font-size: 16px;
+  }
+}
+
+.page-head {
+  color: $white-font;
+  max-height: 299px;
+  height: 100%;
+  .page-head__content {
+    color: $white-font;
+    max-width: pxToRem(1200);
+    padding: pxToRem(30);
+    margin: 0 auto;
+    width: 90%;
+    height: 100%;
+  }
+}
+
+.page-title {
+  @include font(48, 300);
+  margin: pxToRem(36) 0 pxToRem(24);
+}
+.page-description {
+  @include font(18, 300);
+  line-height: pxToRem(36);
+}
+.apply-button {
+  background-color: $bg-badge-color;
+  border-radius: $border-radius;
+  @include flex(space-around, center);
+  border: none;
+  color: white;
+  width: pxToRem(100);
+  height: pxToRem(40);
+  @include font(16, 400);
+  margin: pxToRem(30) 0 pxToRem(5);
+  padding: pxToRem(10) pxToRem(15);
+  box-shadow: $box-shadow;
+  cursor: pointer;
+  transition: all .4s;
+  box-sizing: border-box;
+  i {
+    font-size: 10px;
+    margin-left: pxToRem(10);
+  }
+  &:hover, &:focus {
+    background-color: $active-link-color;
+  }
+}

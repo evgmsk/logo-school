@@ -9,9 +9,11 @@ import {StatBanner} from '../../../interfaces/stat-banner.interface';
 })
 export class AboutStatisticBannerComponent implements OnInit {
   @Input() data: StatBanner;
+  className: string;
   constructor() { }
 
   ngOnInit() {
+    this.className = `fa fa-${this.data.icon}`;
   }
 
 }

@@ -1,0 +1,26 @@
+<div class={{className}}>
+  <a *ngIf="imgLink" class="card-image" [routerLink]="card.path">
+
+  </a>
+  <div *ngIf="!imgLink" class="card-image">
+
+  </div>
+  <div class="card-data">
+    <p class="card-date">
+    <span>
+      <i class="fa fa-calendar-o"></i>
+      {{card.date | date:'MMMM d yyyy'}}
+    </span>
+      <span *ngIf="card.author">
+      <i class="fa fa-user-o"></i>
+      {{card.author}}
+    </span>
+    </p>
+    <a class="card-link" routerLink={{card.path}}>
+      <h5 class="card-title">{{card.title}}</h5>
+    </a>
+
+    <p *ngIf="card.description" class="card-description">{{card.description | shortDescription:descriptionLength }}</p>
+    <ng-content></ng-content>
+  </div>
+</div>

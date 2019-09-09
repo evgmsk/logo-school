@@ -1,0 +1,108 @@
+@import "../../../assets/scss/common-classes";
+
+.header-wrapper {
+  font-family: Roboto, sans-serif;
+  font-weight: 300;
+  display: flex;
+  @media (min-width: $small-device) {
+    display: block;
+  }
+}
+.header-first-line {
+  background-color: $bg-badge-color;
+  width: 100%;
+  opacity: .9;
+  height: 50px;
+  color: #ffffff;
+  .header-first-line__left-block {
+    display: none;
+  }
+  .header-first-line__content {
+    height: 100%;
+    @include flex(flex-start, center);
+    max-width: pxToRem(1200);
+    margin: 0 auto;
+    padding-left: pxToRem(15);
+    opacity: .6;
+  }
+  .fa {
+    font-size: pxToRem(16);
+    margin-right: pxToRem(10);
+  }
+  .vertical-divider {
+    @include vertical-divider();
+  }
+  button {
+    @include flex(space-between, center);
+    background: transparent;
+    border: none;
+    color: inherit;
+    font-size: inherit;
+    cursor: pointer;
+    font-weight: 300;
+  }
+  .header-first-line__right-block {
+    @include flex(space-around, center);
+  }
+  @media (min-width: $small-device) {
+    display: block;
+    .header-first-line__left-block {
+      @include flex(space-around, center);
+    }
+    .header-first-line__content {
+      justify-content: space-between;
+    }
+  }
+}
+.header-second-line {
+  height: 50px;
+  box-sizing: border-box;
+  @include flex(flex-start, center);
+  width: 100%;
+  max-width: pxToRem(1200);
+  margin: 0 auto;
+  padding: 1px 1px 1px pxToRem(15);
+  .logo-wrapper {
+    display: none;
+    .logo-title {
+      @include font(30, 300);
+      font-family: 'Roboto Slab', serif;
+      margin: 0;
+    }
+    .logo-description {
+      color: $font-color-p;
+      @include font(12, 300);
+    }
+  }
+  .logo {
+    background: url('../../../assets/images/logo-1.png') no-repeat;
+    height: 46px;
+    width: 55px;
+    margin: 0 pxToRem(15) 0 0;
+  }
+  .nav-wrapper {
+    @include flex(flex-end, center);
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    .vertical-divider {
+      @include vertical-divider($font-color-p, pxToRem(25), 1px);
+      opacity: .5;
+    }
+  }
+  @media (min-width: $small-device) {
+    height: pxToRem(100);
+    justify-content: space-between;
+    .nav-wrapper {
+      justify-content: flex-end;
+    }
+    .logo-wrapper {
+      display: flex;
+    }
+  }
+  @media (max-width: $medium-device) {
+    .vertical-divider {
+      display: none;
+    }
+  }
+}

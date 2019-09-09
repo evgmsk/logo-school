@@ -1,0 +1,10 @@
+@import "../../../../assets/scss/common-classes";
+
+.shopping-cart {
+  margin: 0 pxToRem(10);
+  i {
+    color: $font-color-p;
+    opacity: .7;
+  }
+}
+

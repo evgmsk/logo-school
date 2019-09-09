@@ -1,0 +1,28 @@
+@import "../../../assets/scss/common-classes";
+
+.person-card {
+  @include flex(flex-start, flex-start);
+  margin: pxToRem(20) pxToRem(20) pxToRem(20) 0;
+  color: $font-color-p;
+  line-height: pxToRem(24);
+  max-width: 270px;
+  min-width: pxToRem(200);
+  img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    box-shadow: $box-shadow;
+    background-color: plum;
+    margin-right: pxToRem(15);
+    @include font(12, 300);
+    color: $white-font;
+    margin-top: -2px;
+  }
+  .person-name {
+    @include font(16, 400);
+  }
+  .person-position {
+    @include font(16, 300);
+    font-style: italic;
+  }
+}

@@ -1,0 +1,7 @@
+<div class="person-card">
+  <img [src]="person.image" [alt]="person.name.first">
+  <div class="person-info-wrapper">
+    <p class="person-name">{{person.name.title | titlecase}} {{person.name.first | titlecase}} {{person.name.last | titlecase}}</p>
+    <p class="person-position">{{person.position | titlecase}}</p>
+  </div>
+</div>

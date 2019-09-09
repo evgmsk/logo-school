@@ -1,0 +1,59 @@
+@import "../../../../assets/scss/mixin";
+
+.footer-newsletter {
+}
+.newsletters {
+  @include flex(flex-start, flex-start, column);
+  input {
+    color: #ffffff;
+    border: 1px solid transparent;
+    height: pxToRem(60);
+    width: 100%;
+    padding-left: pxToRem(20);
+    background: #31373d;
+    box-sizing: border-box;
+    border-radius: $border-radius;
+    &::placeholder {
+      @include font(14, 400);
+      font-style: italic;
+      color: #6a6d70;
+    }
+    &.error {
+      border-color: darken(red, 30%);
+      & + .newsletter-errors {
+        visibility: visible;
+      }
+    }
+  }
+  .newsletter-errors {
+    height: pxToRem(15);
+    margin: pxToRem(5);
+    visibility: hidden;
+    color: darken(red, 20%);
+    transition: all .3s;
+  }
+  button {
+    margin: pxToRem(20) 0;
+    background-color: $bg-badge-color;
+    color: #ffffff;
+    width: pxToRem(130);
+    height: pxToRem(40);
+    line-height: pxToRem(40);
+    border-radius: $border-radius;
+    @include font(16, 300);
+    text-align: center;
+    border: 1px solid transparent;
+    outline: none;
+    cursor: pointer;
+    transition: all .3s;
+    &:not([disabled]):hover, &:not([disabled]):focus {
+      background-color: $active-link-color;
+    }
+    &:disabled {
+      background: transparent;
+      border-color: $font-color-p;
+      color: $font-color-p;
+      cursor: default;
+    }
+  }
+}

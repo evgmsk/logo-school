@@ -1,0 +1,33 @@
+
+<div class="header-wrapper">
+  <div class="header-first-line">
+    <div class="header-first-line__content">
+      <div class="header-first-line__left-block">
+        <i class="fa fa-phone"></i>&nbsp;
+        <span> (982) 654 - 3454</span>
+        <span class="vertical-divider"></span>
+        <i class="fa fa-envelope-o"></i>
+        <span> info@logoschool.edu</span>
+      </div>
+      <div class="header-first-line__right-block">
+        <button>Login&nbsp; / &nbsp;Sign Up &nbsp;&nbsp;<i class="fa fa-sign-in"></i></button>
+      </div>
+    </div>
+  </div>
+  <div class="header-second-line">
+    <div class="logo-wrapper">
+      <a class="logo" [routerLink]="'/home'"></a>
+      <div class="logo-name">
+        <h2 class="logo-title">LOGOSCHOOL</h2>
+        <span class="logo-description">Education Ecosystem</span>
+      </div>
+    </div>
+    <div class="nav-wrapper">
+      <app-nav-menu [className]="'nav-menu'"></app-nav-menu>
+      <span class="vertical-divider"></span>
+      <app-shop></app-shop>
+      <app-search></app-search>
+      <app-device-menu></app-device-menu>
+    </div>
+  </div>
+</div>

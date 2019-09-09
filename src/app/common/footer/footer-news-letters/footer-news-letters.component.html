@@ -1,0 +1,21 @@
+<div class="footer-newsletter">
+  <h5 class="footer-title">
+    newsletter
+  </h5>
+  <p>
+    Enter your email and we'll send you more information of courses and scholarship.
+  </p>
+  <form class="newsletters" (ngSubmit)="onSubmit()" #form="ngForm" >
+    <input
+      type="email"
+      ngModel
+      name="email"
+      placeholder="Your Email..."
+      (blur)="onBlur()"
+      (ngModelChange)="onChange()"
+      [ngClass]="{'error': error.message}"
+    >
+    <div class="newsletter-errors">{{error.message}}</div>
+    <button type="submit" [disabled]="!form.touched || form.dirty && error.message">Subscribe</button>
+  </form>
+</div>

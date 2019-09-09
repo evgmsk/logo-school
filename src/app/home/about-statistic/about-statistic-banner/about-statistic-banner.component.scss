@@ -1,14 +1,31 @@
 @import "../../../../assets/scss/mixin";
 
 .stats-banner {
-  @include flex(space-around, center);
-  background: #6cb051;
-  border-radius: 3px;
-  color: #252525;
+  @include flex(space-between, flex-start);
+  padding: pxToRem(30) pxToRem(30) pxToRem(20);
+  box-sizing: border-box;
+  background: $bg-badge-color;
+  border-radius: $border-radius;
+  color: $font-color-main;
   width: pxToRem(270);
   height: pxToRem(150);
-  margin: 0 pxToRem(15);
+  margin: pxToRem(25) pxToRem(15);
+  .stats-data {
+    height: 100%;
+    @include flex(space-between, flex-start, column);
+  }
+  p {
+    margin: 0;
+  }
+  .stats-banner__title {
+    text-transform: uppercase;
+    @include font(16, 300);
+  }
+  .stats-banner__quantity {
+    @include font(36);
+  }
   i {
-    color: #5a8f45
+    color: $icon-badge-color;
+    font-size: 40px;
   }
 }

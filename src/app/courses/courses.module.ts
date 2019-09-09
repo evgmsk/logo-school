@@ -1,16 +1,24 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import {RouterModule} from '@angular/router';
 
-import { CourseCartComponent } from './course-cart/course-cart.component';
+
 import {CoursesComponent} from './courses.component';
+import { CourseComponent } from './course/course.component';
+import {SharedModule} from '../shared/shared.module';
+import {CoursesRoutingModule} from './courses-routing.module';
 
+// const routes: Routes = [];
 
 
 @NgModule({
-  declarations: [CourseCartComponent, CoursesComponent],
+  declarations: [CoursesComponent, CourseComponent],
   imports: [
-    CommonModule
+    CommonModule,
+    SharedModule,
+    CoursesRoutingModule,
+    RouterModule,
   ],
-  exports: [CourseCartComponent, CoursesComponent]
+  exports: [CoursesComponent, CourseComponent]
 })
 export class CoursesModule { }

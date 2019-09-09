@@ -1,0 +1,93 @@
+@import "../../../assets/scss/common-classes";
+$images: 'blog-1' 'blog-2';
+
+.home-blog-section {
+ @extend %home-section;
+  .blog-article-wrapper {
+    @include flex(center, center);
+    flex-wrap: wrap;
+    max-width: pxToRem(1400);
+    width: 90%;
+    margin: 0 auto pxToRem(100);
+    @media (min-width: 1200px) {
+      flex-wrap: nowrap;
+    }
+    .blog-card {
+      .card-title:first-of-type {
+        margin: pxToRem(20) 0 0;
+      }
+      .card-description {
+        margin: pxToRem(40) 0 pxToRem(60);
+      }
+    }
+  }
+  .section-title {
+    @extend %section-title;
+  }
+  .section-description {
+    @extend %section-description;
+  }
+}
+
+$images: 'blog-1' 'blog-2';
+
+.blog-card {
+  display: block;
+  height: 100%;
+  margin: pxToRem(25) pxToRem(15);
+  max-width: pxToRem(550);
+  width: 80vw;
+  box-shadow: $box-shadow;
+  .card-image {
+    width: 100%;
+    height: calc(80vw/2.85);
+    max-height: calc(550px/2.85);
+  }
+  @each $image in $images {
+    &.#{$image} {
+      .card-image {
+        background: url('../../../assets/images/#{$image}.jpg') no-repeat top;
+        //background-size: cover;
+        background-size: 104% 100%;
+      }
+    }
+  }
+  @media (min-width: 1200px) {
+    .card-image {
+      height: calc(40vw/2.85);
+    }
+  }
+}
+
+.blog-favorite {
+  @include flex(space-between);
+  color: #959595;
+  p {
+    span {
+      margin-right: pxToRem(5);
+      font-size: pxToRem(15);
+    }
+    .fa {
+      font-size: pxToRem(16);
+      margin: 0 pxToRem(5);
+    }
+    span:nth-of-type(2) {
+      .fa {
+        font-size: pxToRem(18);
+      }
+    }
+  }
+  button {
+    border-radius: $border-radius;
+    background: $bg-badge-color;
+    border: none;
+    padding: pxToRem(10) pxToRem(15);
+    @include flex();
+    color: #ffffff;
+    @include font(16, 300);
+    i {
+      margin-left: pxToRem(5);
+      font-size: pxToRem(16);
+    }
+  }
+}

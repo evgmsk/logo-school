@@ -1,0 +1,14 @@
+<div class="footer-courses-block">
+  <h5 class="footer-title">
+    Courses
+  </h5>
+  <nav class="footer-courses">
+    <a
+      *ngFor="let course of (courses | async).slice(0, 7) let i=index"
+      routerLinkActive="active"
+      [routerLink]="course.path"
+    >
+        {{course.name}}
+    </a>
+  </nav>
+</div>

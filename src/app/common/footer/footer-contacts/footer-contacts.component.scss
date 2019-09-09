@@ -1,0 +1,37 @@
+@import "../../../../assets/scss/mixin";
+
+.footer-contacts {
+  max-width: pxToRem(270);
+  p {
+    color: #8a8a8b;
+  }
+  .fa {
+    margin-right: pxToRem(10);
+  }
+  .social-links {
+    @include flex(flex-start);
+    span {
+      cursor: pointer;
+      .fa {
+        margin: 0;
+      }
+      @include flex();
+      width: pxToRem(40);
+      height: pxToRem(40);
+      border-radius: pxToRem(40);
+      border: solid 1px #959595;
+      color: #959595;
+      box-sizing: border-box;
+      margin: pxToRem(10);
+      transition: all .3s;
+      &:first-of-type {
+        margin-left: 0;
+      }
+      &:hover {
+        background: $active-link-color;
+        color: #ffffff;
+        border-color: $active-link-color;
+      }
+    }
+  }
+}

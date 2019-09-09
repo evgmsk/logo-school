@@ -1,3 +1,13 @@
+@import "./variables";
+
+
+@mixin vertical-divider($bg-color: white, $height: 1rem, $width: 2px, $margin: 0 1rem) {
+    background-color: $bg-color;
+    height: $height;
+    width: $width;
+    margin: $margin;
+}
+
 @function pxToRem($size) {
   $res: $size / 16;
   @return #{$res}rem;
@@ -17,6 +27,12 @@
   &:hover, &.active, &:focus {
     border-bottom-color: $hover-color;
   }
+}
+
+@mixin font($size: 48, $weight: 300, $family: $font-family-main) {
+  font-family: $family;
+  font-weight: $weight;
+  font-size: pxToRem($size);
 }
 
 @mixin flex($justify: center, $align: center, $direction: row) {

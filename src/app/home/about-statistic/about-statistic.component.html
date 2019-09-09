@@ -1,15 +1,11 @@
 <section class="stats-about-section">
-  <h2>
+  <h2 class="section-title">
     Welcome to Logoschool
   </h2>
-  <p>Some text</p>
+  <p class="section-description">Some text</p>
   <div class="stats-banners-wrapper">
-    <div class="couple-banners-wrapper">
-      <app-about-statistic-banner *ngFor="let stat of (schoolStats | async).schoolStats.slice(0,2)" [data]="stat"></app-about-statistic-banner>
-    </div>
-    <div class="couple-banners-wrapper">
-      <app-about-statistic-banner *ngFor="let stat of (schoolStats | async).schoolStats.slice(2)" [data]="stat"></app-about-statistic-banner>
-    </div>
+      <app-about-statistic-banner *ngFor="let stat of (schoolStats | async)" [data]="stat">
+      </app-about-statistic-banner>
   </div>
   <div class="about-section-bottom">
 

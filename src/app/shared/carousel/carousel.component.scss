@@ -1,0 +1,67 @@
+@import "../../../assets/scss/mixin";
+
+.simple-carousel {
+  position: relative;
+  height: 100vh;
+  max-height: pxToRem(700);
+  background: url('../../../assets/images/photo1.jpg') no-repeat center;
+  background-size: cover;
+  button {
+    background: transparent;
+    border: none;
+    outline: none;
+    padding: 0;
+    cursor: pointer;
+    i {
+      color: white;
+      opacity: .5;
+      font-size: pxToRem(30);
+    }
+  }
+  .ch-left {
+    position: absolute;
+    top: 50%;
+    left: pxToRem(40);
+    transform: translateY(-50%);
+    z-index: 1000;
+  }
+  .ch-right {
+    position: absolute;
+    top: 50%;
+    right: pxToRem(40);
+    transform: translateY(-50%);
+    z-index: 1000;
+  }
+  .bottom-controls {
+    z-index: 1000;
+    position: absolute;
+    bottom: 20vh;
+    left: 50%;
+    transform: translateX(-50%);
+    @include flex();
+    .bottom-control {
+      width: pxToRem(25);
+      height: pxToRem(25);
+      border-radius: pxToRem(20);
+      border: none;
+      background: transparent;
+      transition: all .3s;
+      margin: pxToRem(5);
+      padding: 0;
+      box-sizing: content-box;
+      @include flex();
+      .control-content {
+        width: pxToRem(20);
+        height: pxToRem(20);
+        border-radius: pxToRem(20);
+        background: #ffffff;
+        opacity: .7;
+      }
+      &.current {
+        cursor: default;
+        background: #ffffff;
+        opacity: 1;
+      }
+    }
+  }
+}

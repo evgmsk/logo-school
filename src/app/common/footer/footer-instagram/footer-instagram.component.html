@@ -1,0 +1,17 @@
+<div class="footer-instagram">
+  <h5 class="footer-title">Instagram</h5>
+  <div class="photo-wrapper">
+    <a
+      *ngFor="let link of instgramLinks let i=index"
+      href={{link}}
+      target="_blank"
+      class={{className+i.toString()}}>
+    </a>
+  </div>
+  <a class="footer-instagram-main-link"
+    href={{instgramLinks[0]}}
+    target="_blank">
+    <i class="fa fa-instagram"></i>
+    @logoschool_edu
+  </a>
+</div>

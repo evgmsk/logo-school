@@ -1,0 +1,22 @@
+@import "../../../../assets/scss/mixin";
+
+.footer-courses {
+  @include flex(flex-start, flex-start, column);
+  margin: 0;
+  padding: 0;
+  color: #959595;
+  a {
+    max-width: pxToRem(210);
+    margin: 0 pxToRem(15) 0 0 ;
+    cursor: pointer;
+    text-decoration: none;
+    color: #959595;
+    &:hover, &:focus,
+    &.active {
+      color: $active-link-color;
+    }
+    &.active {
+      cursor: default;
+    }
+  }
+}

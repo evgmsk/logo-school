@@ -1,0 +1,11 @@
+<div class="dropdown-menu-wrapper">
+  <a class="dropdown-menu-button" [ngClass]="{open: dropdownOpen}" (click)="openSubMenu()">
+    {{routes.name}}
+    <i class="fa fa-angle-down"></i>
+  </a>
+  <ul [ngClass]="{open: dropdownOpen}" class="sub-menu">
+    <li *ngFor="let sub_route of routes.sub_links" class="sub-menu-item" (click)="onSelectMenuItem()">
+      <a  routerLink={{sub_route.path}}>{{sub_route.name}} </a>
+    </li>
+  </ul>
+</div>

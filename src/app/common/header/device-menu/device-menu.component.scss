@@ -1,0 +1,59 @@
+@import "../../../../assets/scss/common-classes";
+
+.device-nav-bar {
+  position: relative;
+  width: pxToRem(140);
+  .menu-dropdown-button {
+    @extend %circle-button;
+    width: pxToRem(70);
+    height: pxToRem(70);
+    bottom: pxToRem(-65);
+    right: pxToRem(50);
+    z-index: 100;
+    .menu-icon {
+      opacity: 1;
+      position: relative;
+      background-color: white;
+      width: pxToRem(25);
+      height: 3px;
+      transition: all .4s ease-in-out;
+      &:before, &:after {
+        transition: all .4s ease-in-out;
+        content: '';
+        width: pxToRem(25);
+        height: 3px;
+        background-color: white;
+        position: absolute;
+        left: 0;
+      }
+      &:before {
+        top: 8px;
+      }
+      &:after {
+        bottom: 8px;
+      }
+    }
+    &.open {
+      .menu-icon {
+        background-color: transparent;
+        &:after, &:before {
+          top: 0;
+        }
+        &:after {
+          transform: rotate(45deg);
+        }
+        &:before {
+          transform: rotate(135deg);
+        }
+      }
+    }
+  }
+  @media (min-width: $small-device){
+    .menu-dropdown-button {
+      bottom: pxToRem(-85);
+    }
+  }
+  @media (min-width: $medium-device){
+    display: none;
+  }
+}

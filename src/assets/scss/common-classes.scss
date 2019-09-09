@@ -1,0 +1,43 @@
+@import './mixin';
+
+%home-section {
+  padding: pxToRem(.1);
+  box-sizing: border-box;
+  background-color: $bg-page;
+}
+%section-title {
+  @include font(48);
+  color: $font-color-main;
+  margin: pxToRem(110) 0 0;
+  text-align: center;
+  @media (max-width: 900px) {
+    @include font(40);
+  }
+  @media (max-width: 600px) {
+    @include font(36);
+  }
+}
+
+%circle-button {
+  border: none;
+  position:absolute;
+  outline: none;
+  cursor: pointer;
+  background: $events-buttons-color;
+  color: $white-font;
+  border-radius: 100%;
+  height: pxToRem(50);
+  width: pxToRem(50);
+  box-shadow: 0 2px 2px 1px darken(rgba(230,230,230, .4), 40%);
+  @include flex();
+  &:hover, &:focus {
+    background: $bg-badge-color;
+  }
+}
+
+%section-description {
+  @include font(16, 400);
+  color: $font-color-p;
+  margin: pxToRem(30) 0 pxToRem(60);
+  text-align: center;
+}

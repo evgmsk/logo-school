@@ -1,0 +1,43 @@
+@import "../../../assets/scss/mixin";
+
+footer {
+  line-height: pxToRem(30);
+  @include flex(space-between, center, column);
+  min-height: pxToRem(470);
+  background-color: #262c33;
+  .footer-body {
+    font-family: Roboto, sans-serif;
+    font-weight: 300;
+    color: #959595;
+    height: 100%;
+    @include flex(flex-start, flex-start);
+    flex-wrap: wrap;
+    max-width: pxToRem(500);
+    @media (min-width: $small-device) {
+      justify-content: space-between;
+      max-width: pxToRem(600);
+    }
+    @media (min-width: $desktop) {
+      max-width: pxToRem(1200);
+    }
+    .footer-component {
+      margin: 0 pxToRem(15);
+     // padding: 0 pxToRem(5);
+      box-sizing: border-box;
+      width: 20%;
+      min-width: pxToRem(270);
+    }
+    .footer-title {
+      @include font(18, 300);
+      text-transform: uppercase;
+      margin: pxToRem(50) 0 pxToRem(20);
+      color: #ffffff;
+    }
+  }
+  .footer-bottom {
+    background-color: #ffffff;
+    height: pxToRem(80);
+    width: 100%;
+  }
+
+}

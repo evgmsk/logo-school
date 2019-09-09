@@ -1,0 +1,48 @@
+@import "../../../../../assets/scss/mixin";
+.dropdown-menu-wrapper {
+  width: pxToRem(65);
+  position: relative;
+  a {
+   @include nav-item();
+  }
+  .dropdown-menu-button {
+    cursor: pointer;
+    width: 100%;
+    @include flex(space-between, center);
+    &.open {
+      border-bottom-color:  #6cb051;
+      .fa {
+        transform: rotate(-90deg);
+      }
+    }
+    .fa {
+      display: block;
+      font-size: 14px;
+      transition: all .4s;
+    }
+  }
+  .sub-menu-item {
+    list-style-type: none;
+    line-height: pxToRem(30);
+    a {
+      height: auto;
+      line-height: pxToRem(30);
+    }
+  }
+  .sub-menu {
+    width: pxToRem(65);
+    position: absolute;
+    top: -0px;
+    opacity: 0;
+    left: 0;
+    padding: pxToRem(10) 0 0;
+    background-color: #ffffff;
+    transition: all .4s;
+    z-index: -1;
+    &.open {
+      top: pxToRem(100);
+      opacity: 1;
+      z-index: 10;
+    }
+  }
+}

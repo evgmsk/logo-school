@@ -1,9 +1,21 @@
 <section class="home-course-section">
-  <h2>Our Featured Courses</h2>
-  <p>some text</p>
+  <h2 class="section-title">Our Featured Courses</h2>
+  <p class="section-description">some text</p>
   <div class="course-wrapper">
-    <app-course-cart *ngFor="let cart of (carts | async).featuredCourses" [course]="cart"></app-course-cart>
+    <app-media-card
+      *ngFor="let course of (cards | async)"
+      [card]="course"
+      [index]="i"
+      [className]="'course-card'"
+      [descriptionLength]="70"
+    >
+      <a type="button" class="apply-button" [routerLink]="course.path">
+        Apply
+        <i class="fa fa-chevron-right"></i>
+      </a>
+    </app-media-card>
   </div>
-  <a class="all-courses-link" routerLink="/courses">View all courses</a>
-  <!--<button class="all-courses-button" (click)="redirectToCourses()">View all courses</button>-->
+  <div class="all-courses-link">
+    <a  routerLink="/courses" (click)="onClick()">View all courses</a>
+  </div>
 </section>

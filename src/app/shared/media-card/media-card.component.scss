@@ -1,0 +1,41 @@
+@import "../../../assets/scss/common-classes";
+a {
+  display: block;
+}
+.card-data {
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+  padding: pxToRem(30);
+  font-family: Roboto, sans-serif;
+  background-color: $white-font;
+  .card-date {
+    @include font(14, 400);
+    color: $font-color-p;
+    font-style: italic;
+    span {
+      margin-right: pxToRem(10);
+    }
+    .fa {
+      margin-right: pxToRem(5);
+    }
+  }
+  .card-description {
+    color: $font-color-p;
+    max-height: pxToRem(48);
+    line-height: pxToRem(24);
+    overflow: hidden;
+  }
+  .card-link {
+    color: $font-color-main;
+    cursor: pointer;
+    &:hover, &:focus {
+      color: $active-link-color;
+    }
+  }
+}
+
+.card-title {
+  @include font(30);
+  margin: pxToRem(15) 0;
+}

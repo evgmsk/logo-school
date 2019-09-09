@@ -1,27 +1,28 @@
-@import "../../../assets/scss/mixin";
+@import "../../../assets/scss/common-classes";
 
 .stats-about-section {
-  font-family: Roboto, sans-serif;
-  font-weight: 300;
-  h2 {
-    font-size: pxToRem(48);
-    font-weight: inherit;
-    margin-top: pxToRem(120);
+  @extend %home-section;
+  color: $font-color-main;
+  .section-title {
+    @extend %section-title;
   }
-  @include flex(center, center, column);
-  color: #252525;
+  .section-description {
+    @extend %section-description;
+  }
+
   .about-section-bottom {
-    background-color: #a2cf6e;
+    background-color: $events-buttons-color;
     height: pxToRem(20);
     width: 100%;
     margin-top: pxToRem(120);
   }
 }
 .stats-banners-wrapper {
- @include flex(space-between);
-  max-width: pxToRem(1200);
-}
-.couple-banners-wrapper {
-  width: 50%;
-  @include flex(space-around)
+ @include flex(space-around);
+  max-width: pxToRem(650);
+  margin: auto;
+  flex-wrap: wrap;
+  @media (min-width: 1200px) {
+    max-width: pxToRem(1200);
+  }
 }

@@ -1,0 +1,50 @@
+@import "../../../../assets/scss/mixin";
+
+.carousel-item {
+  z-index: 10;
+  max-height: pxToRem(700);
+  width: 100%;
+  height: 100%;
+  color: white;
+  transition: all .7s ease-out;
+  opacity: 0;
+  position: absolute;
+  padding: pxToRem(.01);
+  .carousel-item-content {
+    position: absolute;
+    width: 70vw;
+    height: 30vh;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+    @media (min-width: 900px) {
+      height: 40vh;
+    }
+    .carousel-item__data-author {
+      @include font(24);
+      text-align: center;
+    }
+    .carousel-item__data-message {
+      position: relative;
+      @include font(60);
+      text-align: center;
+      margin: 0 auto;
+      top: 40%;
+      transform: translateY(-50%);
+
+      @media (max-width: 1200px) {
+        @include font(40);
+      }
+      @media (max-width: 600px) {
+        @include font(30);
+      }
+    }
+  }
+  &.item1 {
+    z-index: 11;
+    opacity: 1;
+  }
+}
+
+

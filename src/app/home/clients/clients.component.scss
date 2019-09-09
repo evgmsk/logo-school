@@ -1,0 +1,47 @@
+@import "../../../assets/scss/common-classes";
+
+$clients: 'partner1', 'partner1', 'partner1', 'partner1', 'partner1', 'partner1';
+$path: '../../../';
+
+.client-section {
+  @extend %home-section;
+  background-color: #ebebeb;
+  .section-title {
+    @extend %section-title;
+    @include font(48, 300);
+  }
+  .section-description {
+    @include font(18);
+    @extend %section-description;
+  }
+  .clients-wrapper {
+    @include flex();
+    flex-wrap: wrap;
+    margin: pxToRem(50) auto pxToRem(170);
+    max-width: pxToRem(1200);
+    @media (max-width: 1100px) {
+      max-width: pxToRem(600);
+    }
+  }
+}
+
+@each $client in $clients {
+  .client.#{$client} {
+    background: url('#{$path}assets/images/#{$client}.jpg')  no-repeat center;
+    background-size: contain;
+    width: pxToRem(170);
+    height: pxToRem(140);
+    filter: grayscale(100%);
+    opacity: .7;
+    transition: all .3s;
+    margin: pxToRem(15);
+    //&:first-of-type {
+    //  margin-left: 0;
+    //}
+    &:hover {
+      filter: unset;
+      opacity: 1;
+    }
+  }
+}
+

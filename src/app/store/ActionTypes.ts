@@ -1,4 +1,13 @@
 export const SET_SCHOOL_STATS = 'SET_SCHOOL_STATS';
 export const SELECT_COURSE = 'SELECT_COURSE';
-export const SET_FEATURED_COURSES = 'SET_FEATURED_COURSES';
+export const SET_COURSES = 'SET_COURSES';
 export const SELECT_EVENT = 'SELECT_EVENT';
+export const SET_TESTIMONIALS = 'SET_TESTIMONIALS';
+export const SET_ARTICLES = 'SET_ARTICLES';
+export const SELECT_ARTICLE = 'SELECT_ARTICLE';
+export const ADD_TO_CART = 'ADD_TO_CART';
+export const REMOVE_FROM_CART = 'REMOVE_FROM_CART';
+export const AUTHORIZED = 'AUTHORIZED';
+export const SET_TOKEN = 'SET_TOKEN';
+export const SET_STAFF = 'SET_STAFF';
+
