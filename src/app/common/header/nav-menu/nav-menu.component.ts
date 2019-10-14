@@ -18,18 +18,18 @@ export class NavMenuComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.subscription = this.sevice.onStateChange.subscribe((state: boolean) => {
-        this.dropdownOpen = state;
-      }
-    );
+    // this.subscription = this.sevice.onStateChange.subscribe((state: boolean) => {
+    //     this.dropdownOpen = state;
+    //   }
+    // );
   }
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    // this.subscription.unsubscribe();
   }
   openSubMenu() {
-    this.sevice.onOpenDropdown();
+   // this.sevice.onOpenDropdown();
   }
   onClick() {
-    this.sevice.onCloseDropdown();
+    // this.sevice.onCloseDropdown();
   }
 }

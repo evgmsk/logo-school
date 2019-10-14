@@ -1,0 +1,37 @@
+<section class="course-page" *ngIf="course$ | async as course">
+  <div class="page-head">
+
+  </div>
+  <div class="page-content">
+    <div class="course-img" [ngClass]="course.image.split('.')[0]">
+      <div class="course-title-wrapper">
+        <h2 class="course-title" appTourStep="third" data-tour-step-name="third">{{course.name}}</h2>
+        <p class="course-calendar">
+          <i class="fa fa-calendar"></i>
+          {{course.date | date:'MMMM d yyyy'}}
+        </p>
+      </div>
+    </div>
+    <div class="course-info">
+      <div class="course-staff">
+        <h5 class="course-info__title">
+          <i class="fa fa-address-book-o"></i>
+          Instructors:
+        </h5>
+        <div class="staff-wrapper">
+          <app-person-card *ngFor="let person of course.staff" [person]="person">
+          </app-person-card>
+        </div>
+      </div>
+      <div class="course-description">
+        <h5 class="course-info__title" appDrop>
+          <i class="fa fa-dot-circle-o"></i>
+          Description:
+        </h5>
+        {{course.description}}
+      </div>
+
+    </div>
+  </div>
+</section>
+<app-ng-tour-step></app-ng-tour-step>

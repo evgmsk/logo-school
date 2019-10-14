@@ -1,0 +1,37 @@
+<section class="courses-list-page" [@coursesAnimations]="pageState">
+  <div class="page-head">
+    <div class="page-head__content">
+      <h2 class="page-title">Courses List</h2>
+      <p class="page-description">Lorem ipsum dolor sit amet, consectetur adipiscing aelit, sed do eiusmod tempor incididunt.</p>
+    </div>
+  </div>
+  <div class="content-wrapper">
+    <div class="courses-wrapper">
+      <app-media-card
+        *ngFor="let course of (courses | async) let i=index"
+        [card]="course"
+        [index]="i"
+        [className]="'course-card'"
+      >
+        <a *ngIf="!i" appTourStep="second" data-tour-step-name="second" type="button" class="apply-button" [routerLink]="course.path">
+          Apply
+          <i class="fa fa-chevron-right"></i>
+        </a>
+        <a *ngIf="i" type="button" class="apply-button" [routerLink]="course.path">
+            Apply
+            <i class="fa fa-chevron-right"></i>
+        </a>
+      </app-media-card>
+    </div>
+    <div class="search-card">
+      <div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="pagination-wrapper">
+
+  </div>
+</section>
+<app-ng-tour-step></app-ng-tour-step>

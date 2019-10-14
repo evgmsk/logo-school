@@ -1,0 +1,82 @@
+<div class="tour-step-backdrop" *ngIf="step$ | async as st">
+  <div class="tour-step-backdrop__container" *ngIf="targetRect">
+    <div 
+      class="tour-step-backdrop__top"
+      [style.height.px]="targetRect.y"
+    ></div>
+    <div 
+      class="tour-step-backdrop__middle"
+      [style.height.px]="targetRect.height"
+    >
+      <div 
+        class="tour-step-backdrop__left"
+        [style.height.px]="targetRect.height"
+        [style.width.px]="targetRect.x"
+      ></div>
+      <div
+        class="target-window"
+        [style.width.px]="targetRect.width"
+        [style.height.px]="targetRect.height"
+      >
+      </div>
+      <div
+        class="tour-step-backdrop__right"
+        [style.height.px]="targetRect.height"
+      ></div>
+    </div>
+    <div class="tour-step-backdrop__bottom"></div>
+  </div>
+  <div
+    class="tour-step-modal"
+    *ngIf="targetExist"
+    [style.top.px]="targetPosition.top + targetRect.height + 20"
+    [style.left.px]="targetPosition.left - 80"
+  >
+    <div *ngIf="!st.customContent" class="tour-step-modal__content">
+        <div class="tour-step-modal__header">
+           <h3 class="tour-step-modal__title">
+            {{currentStep.title}}
+          </h3>
+          <button class="tour-step-modal__close-button" type="button" (click)="clickOnClose()">
+            &times;
+          </button>
+        </div>
+        <div class="tour-step-modal__body">
+          <p class="tour-step-modal__description">
+            {{currentStep.description}}
+          </p>
+        </div>
+        <div class="tour-step-modal__footer">
+          <div *ngIf="!st.withoutCounter" class="tour-step-modal__counter">
+            {{stepNumber}}/{{total}}
+          </div>
+          <button
+            *ngIf="!st.withoutPrev && !first" 
+            type="button" 
+            class="btn btn-default tour-step-modal__prev-button"
+            (click)="clickOnPrev()"
+          >
+            {{'Prev'}}
+          </button>
+          <button
+            *ngIf="!last"
+            type="button"
+            class="btn btn-default tour-step-modal__next-button"
+            (click)="clickOnNext()"          
+          >
+            {{'Next'}}
+          </button>
+          <button
+            *ngIf="last"
+            type="button"
+            class="btn btn-default tour-step-modal__end-button"
+            (click)="clickOnClose()"
+          >
+            {{'Done'}}
+          </button>
+        </div>
+      </div>
+      <ng-content></ng-content>
+  </div>
+</div>
+

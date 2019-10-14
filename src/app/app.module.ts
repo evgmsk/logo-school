@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {StoreModule} from '@ngrx/store';
 
 import { NgModule } from '@angular/core';
@@ -10,14 +11,15 @@ import {EffectsModule} from '@ngrx/effects';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ContactsComponent } from './contacts/contacts.component';
-import { PagesComponent } from './pages/pages.component';
+import { ContactsComponent } from './modules/contacts/contacts.component';
+import { PagesComponent } from './modules/pages/pages.component';
 import {CoreModule} from './common/core.module';
-import {HomeModule} from './home/home.module';
+import {HomeModule} from './modules/home/home.module';
 import {SharedModule} from './shared/shared.module';
 import {PhotoService} from './services/photo.service';
 import {PhotoEffect} from './store/app.effects';
 import {reducers} from './store/app.reducers';
+// import {TourService} from './services/ng-tour.service'
 
 // reducers['router'] =  routerReducer;
 
@@ -29,6 +31,7 @@ import {reducers} from './store/app.reducers';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     SharedModule,
     FormsModule,
     CoreModule,

@@ -1,19 +1,19 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import {PagesComponent} from './pages/pages.component';
-import {ContactsComponent} from './contacts/contacts.component';
-import {HomeComponent} from './home/home.component';
+import {PagesComponent} from './modules/pages/pages.component';
+import {ContactsComponent} from './modules/contacts/contacts.component';
+import {HomeComponent} from './modules/home/home.component';
 
 
 
 const routes: Routes = [
-  {path: 'home', component: HomeComponent},
-  {path: 'pages', component: PagesComponent},
-  {path: 'events', loadChildren: () => import('./events/events.module').then(mod => mod.EventsModule)},
-  {path: 'courses', loadChildren: () => import('./courses/courses.module').then(mod => mod.CoursesModule)},
-  {path: 'contacts', component: ContactsComponent},
-  {path: '**', component: HomeComponent, }
+  {path: 'home', component: HomeComponent, data: {animation: 'HomePage'}},
+  {path: 'pages', component: PagesComponent, data: {animation: 'PagesPage'}},
+  {path: 'events', loadChildren: () => import('./modules/events/events.module').then(mod => mod.EventsModule)},
+  {path: 'courses', loadChildren: () => import('./modules/courses/courses.module').then(mod => mod.CoursesModule)},
+  {path: 'contacts', component: ContactsComponent, data: {animation: 'ContactPage'}},
+  {path: '**', component: HomeComponent }
 ];
 
 @NgModule({
@@ -21,3 +21,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+ 

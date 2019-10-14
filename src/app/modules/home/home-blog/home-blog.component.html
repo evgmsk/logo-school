@@ -1,0 +1,20 @@
+<section class="home-blog-section home-section">
+  <h2 class="section-title">From the blog</h2>
+  <p class="section-description">Some text</p>
+  <div class="blog-article-wrapper">
+    <app-media-card
+      *ngFor="let article of (articles | async) let i=index"
+      [card]="article"
+      [index]="i"
+      [className]="'blog-card'"
+    >
+      <div class="blog-favorite">
+        <button type="button" (click)="selectBlog()">View more <i class="fa chevron-right"></i></button>
+        <p>
+          <span><i class="fa fa-heart"></i>{{article.favorites}}</span>
+          <span><i class="fa fa-comments-o"></i>{{article.comments.length}}</span>
+        </p>
+      </div>
+    </app-media-card>
+  </div>
+</section>

@@ -3,20 +3,18 @@
 .nav-menu {
   font-size: pxToRem(16);
   color: #959595;
-  @debug pxToRem(16);
   display: flex;
   box-sizing: border-box;
   margin: 0;
-  li {
+  a {
     @include flex();
     list-style-type: none;
-    margin: 0 pxToRem(10);
-  }
-  a {
+    //margin: 0 pxToRem(10);
     @include nav-item();
   }
-  nav {
-    display: flex;
+  .nav-item-wrapper {
+    @include flex(center, center);
+    padding: 0 10px;
   }
   @media (max-width: 900px) {
     display: none;

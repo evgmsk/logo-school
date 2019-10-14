@@ -1,10 +1,10 @@
-<div class="dropdown-menu-wrapper">
-  <a class="dropdown-menu-button" [ngClass]="{open: dropdownOpen}" (click)="openSubMenu()">
-    {{routes.name}}
+<div class="dropdown-menu-wrapper" appDrop>
+  <a class="dropdown-menu-button">
+    <span>{{routes.name}}</span>
     <i class="fa fa-angle-down"></i>
   </a>
-  <ul [ngClass]="{open: dropdownOpen}" class="sub-menu">
-    <li *ngFor="let sub_route of routes.sub_links" class="sub-menu-item" (click)="onSelectMenuItem()">
+  <ul class="sub-menu" >
+    <li *ngFor="let sub_route of routes.sub_links" class="sub-menu-item">
       <a  routerLink={{sub_route.path}}>{{sub_route.name}} </a>
     </li>
   </ul>

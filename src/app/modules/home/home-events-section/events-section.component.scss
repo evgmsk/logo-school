@@ -1,0 +1,102 @@
+@import "../../../../assets/scss/common-classes";
+
+$event-images: 'event-1', 'event-2', 'event-3', 'event-4', 'event-5', 'event-6';
+
+.home-events-section {
+  @extend %home-section;
+  .section-title {
+    @extend %section-title;
+  }
+  .section-description {
+    @extend %section-description;
+  }
+  .events-wrapper {
+    max-width: pxToRem(1450);
+    @include flex();
+    flex-wrap: wrap;
+    margin: 0 auto pxToRem(200);
+
+  }
+  .event-card {
+    border-radius: $border-radius;
+    box-shadow: $box-shadow;
+    @include flex(flex-start, flex-start, column);
+    margin: pxToRem(15);
+    min-height: pxToRem(360);
+    width: pxToRem(360);
+    .card-title {
+      font-size: pxToRem(18);
+      font-weight: 400;
+    }
+    .event-details-control {
+      @extend %circle-button;
+      top: pxToRem(-25);
+      right: pxToRem(50);
+      @include font(24, 400);
+      span {
+        transition: all .4s ease;
+        line-height: 0;
+        display: block;
+      }
+      &:hover, &:focus {
+        background: $bg-badge-color;
+      }
+    }
+    .event-info {
+      outline: none;
+      opacity: 0;
+      max-height: 0;
+      transition: all .4s ease-in-out, opacity .35s ease-in-out;
+    }
+    &:hover, &:focus {
+      .event-info {
+        max-height: pxToRem(500);
+        opacity: 1;
+        transition: all .4s ease-in-out, opacity .45s ease-in-out;
+      }
+    }
+    p {
+      color: $font-color-p;
+      @include font(16, 300);
+      margin: pxToRem(8) 0;
+      line-height: pxToRem(24);
+      &:last-of-type {
+        margin-bottom: 0;
+        .fa {
+          font-size: pxToRem(15);
+        }
+      }
+      .fa {
+        margin-right: pxToRem(10);
+      }
+      &:first-of-type {
+        margin-top: 0;
+
+      }
+
+    }
+  }
+}
+
+.show-details .event-card{
+  .event-info {
+    max-height: pxToRem(200);
+    opacity: 1;
+  }
+  .event-details-control {
+    span {
+      transform: rotate(45deg);
+    }
+  }
+}
+@each $image in $event-images {
+  .#{$image} {
+    .card-image {
+      flex-grow: 2;
+      width: 100%;
+      background: url('../../../../assets/images/#{$image}.jpg') no-repeat top;
+      background-size: cover;
+    }
+  }
+}
+

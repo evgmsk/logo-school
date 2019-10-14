@@ -1,14 +1,16 @@
 @import './mixin';
 
 %home-section {
-  padding: pxToRem(.1);
+  padding: 1px;
   box-sizing: border-box;
   background-color: $bg-page;
 }
 %section-title {
   @include font(48);
+  width: auto;
+  max-width: pxToRem(1000);
   color: $font-color-main;
-  margin: pxToRem(110) 0 0;
+  margin: pxToRem(110) auto 0;
   text-align: center;
   @media (max-width: 900px) {
     @include font(40);

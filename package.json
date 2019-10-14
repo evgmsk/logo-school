@@ -26,6 +26,7 @@
     "ngrx": "^2.0.1",
     "rxjs": "^6.5.2",
     "tslib": "^1.9.0",
+    "web-animations-js": "^2.3.2",
     "zone.js": "^0.10.2"
   },
   "devDependencies": {

@@ -9,13 +9,15 @@ import {FooterCoursesComponent} from './footer/footer-courses/footer-courses.com
 import {FooterInstagramComponent} from './footer/footer-instagram/footer-instagram.component';
 import {FooterNewsLettersComponent} from './footer/footer-news-letters/footer-news-letters.component';
 import {NavService} from '../services/nav.service';
-
+import {TourService} from './ng-tour.service';
 import {ShopComponent} from './header/shop/shop.component';
 import {NavMenuComponent} from './header/nav-menu/nav-menu.component';
 import {SubMenuComponent} from './header/nav-menu/sub-menu/sub-menu.component';
 import {SearchComponent} from './header/search/search.component';
 import {DeviceMenuComponent} from './header/device-menu/device-menu.component';
 import {HeaderComponent} from './header/header.component';
+import {SharedModule} from '../shared/shared.module';
+//import {TourServiceWrapper} from './ng-tour-wrapper.service'
 
 @NgModule({
   declarations: [
@@ -29,18 +31,19 @@ import {HeaderComponent} from './header/header.component';
     FooterContactsComponent,
     FooterInstagramComponent,
     FooterCoursesComponent,
-    FooterNewsLettersComponent,
+    FooterNewsLettersComponent
   ],
   imports: [
     CommonModule,
     RouterModule,
     FormsModule,
+    SharedModule
   ],
-  providers: [NavService],
+  providers: [NavService, TourService],
   exports: [
     HeaderComponent,
     FooterComponent,
-    DeviceMenuComponent,
+    DeviceMenuComponent
   ]
 })
 

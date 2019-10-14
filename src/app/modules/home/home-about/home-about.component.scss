@@ -1,0 +1,53 @@
+@import "../../../../assets/scss/common-classes";
+
+.main-about-section {
+  @extend %home-section;
+  background: url(../../../../assets/images/head.jpg) no-repeat center;
+  background-size:  cover;
+  max-height: pxToRem(920);
+  height: 100%;
+  color: #ffffff;
+  $header: pxToRem(100);
+  .section-title {
+    color: $white-font;
+    @extend %section-title;
+    margin-top: 40vh;
+    text-transform: uppercase;
+    @media (orientation: portrait) {
+      margin-top: 45vw;
+    }
+  }
+  .section-description {
+    @extend %section-description;
+    color: $white-font;
+    @include font(20, 300);
+    padding: 0 10%;
+    text-align: center;
+    width: 50%;
+    line-height: pxToRem(40);
+    margin: pxToRem(40) auto;
+  }
+  .about-controls {
+    @include flex(center, center);
+    margin-bottom: 25vh;
+    button {
+      width: pxToRem(220);
+      height: pxToRem(60);
+      margin: 0 pxToRem(15);
+      background: transparent;
+      border: 1px solid $white-font;
+      border-radius: $border-radius;
+      color: white;
+      text-transform: uppercase;
+      @include font(14, 300);
+      cursor: pointer;
+      transition: all .3s;
+      box-sizing: border-box;
+      &:hover, &:active {
+        background-color: $active-link-color;
+        border-color: $active-link-color;
+      }
+    }
+  }
+
+}

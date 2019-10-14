@@ -18,6 +18,7 @@
   height: pxToRem($height);
   line-height: pxToRem($height);
   color: $color;
+  border-top: $border;
   border-bottom: $border;
   text-decoration: none;
   box-sizing: border-box;
