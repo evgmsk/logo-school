@@ -17,7 +17,7 @@ import {SearchComponent} from './header/search/search.component';
 import {DeviceMenuComponent} from './header/device-menu/device-menu.component';
 import {HeaderComponent} from './header/header.component';
 import {SharedModule} from '../shared/shared.module';
-//import {TourServiceWrapper} from './ng-tour-wrapper.service'
+import {AngularTourModule} from '../modules/angular-tour/angular-tour.module';
 
 @NgModule({
   declarations: [
@@ -37,7 +37,8 @@ import {SharedModule} from '../shared/shared.module';
     CommonModule,
     RouterModule,
     FormsModule,
-    SharedModule
+    SharedModule,
+    AngularTourModule.forChild(),
   ],
   providers: [NavService, TourService],
   exports: [

@@ -1,7 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import {Subscription} from 'rxjs';
 
-import {TourService2, TourStepInterface} from '../../../common/ng-tour.service2';
+// import {TourService2, TourStepInterface} from '../../../common/ng-tour.service2';
+import {TourService, TourStepInterface} from '../../angular-tour/services/tour.service';
 
 const steps: TourStepInterface[] = [
   {stepName: 'first', route: 'home'},
@@ -18,8 +19,8 @@ const steps: TourStepInterface[] = [
 })
 export class HomeAboutComponent implements OnInit, OnDestroy {
   subscription: Subscription;
-  constructor(private tour: TourService2) { 
-    console.log(this.tour.id)
+  constructor(private tour: TourService) {
+    // console.log(this.tour.id)
   }
 
   ngOnInit() {
@@ -27,10 +28,11 @@ export class HomeAboutComponent implements OnInit, OnDestroy {
     // this.tour.startTour(steps);
   }
   ngOnDestroy() {
-    
+
   }
   onStartTour() {
-    if (!this.tour.getTourStatus())
-      this.tour.startTour(steps);
+    if (!this.tour.getTourStatus()) {
+      this.tour.startTour({steps});
+    }
   }
 }

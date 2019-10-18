@@ -1,0 +1,86 @@
+$bg-color: rgba(70, 110, 110, .5);
+$font-color: rgba(50 ,100, 110, .8);
+
+
+.tour-step-modal {
+    background: white;
+    position: absolute;
+    min-width: 200px;
+    min-height:150px;
+    //border: solid 3px $font-color;
+    border-radius: 4px;
+    box-shadow: 0 0 12px 4px rgba(0, 0, 0, 0.55);
+    color: $font-color;
+    z-index: 1100;
+}
+.tour-step-modal__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: .8rem;
+    .tour-step-modal__header {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+    .tour-step-modal__body {
+        padding: 1rem 0;
+        min-height: 50px;
+        flex-grow: 2;
+        p {
+            margin: 0;
+        }
+    }
+    .tour-step-modal__close-button {
+        background: transparent;
+        border: none;
+        color: darkgrey;
+        font-size: 1.6rem;
+        margin: -5px -5px 0 0;
+        cursor: pointer;
+        &:hover {
+           color: var(--pale-grey); 
+        }
+    }
+    .btn {
+        color: #2f2f2f;
+        width: auto;
+        height: auto;
+        border-radius: 4px;
+        background: transparent;
+        color: grey;
+        cursor: pointer;
+        padding: 8px 16px;
+        box-shadow: 0 0 2px 2px  rgba(0, 0, 0, 0.24), inset 0 1px 3px 0 rgba(0, 0, 0, 0.16);
+        border: solid 1px grey;
+        transition: all .3s;
+        &:hover {
+            border-color: darken(grey, 5%);
+            box-shadow: 1px 1px 2px 1px  rgba(0, 0, 0, 0.34);
+        }
+    }
+    .tour-step-modal__footer {
+        padding: .5rem 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        justify-self: end;
+        width: 100%;
+    }
+}
+:host {
+    &.with-arrow-down {
+        .tour-step-modal::after {
+            content: '';
+            width: 0;
+            height: 0;
+            border-bottom: .4rem solid #ffffff;
+            border-left: .4rem solid transparent;
+            border-right: .4rem solid transparent;
+            position: absolute;
+            top: -.4rem;
+            right: 1rem;
+        }
+    }
+}

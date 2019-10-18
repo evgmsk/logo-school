@@ -8,7 +8,7 @@
   .section-description {
     @extend %section-description;
   }
-  .course-wrapper {;
+  .course-wrapper {
     flex-wrap: wrap;
     @include flex(center, center);
   }

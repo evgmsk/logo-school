@@ -19,6 +19,7 @@ import {SharedModule} from './shared/shared.module';
 import {PhotoService} from './services/photo.service';
 import {PhotoEffect} from './store/app.effects';
 import {reducers} from './store/app.reducers';
+import {AngularTourModule} from './modules/angular-tour/angular-tour.module';
 // import {TourService} from './services/ng-tour.service'
 
 // reducers['router'] =  routerReducer;
@@ -42,6 +43,7 @@ import {reducers} from './store/app.reducers';
     StoreRouterConnectingModule.forRoot(),
     StoreDevtoolsModule.instrument(),
     EffectsModule.forRoot([PhotoEffect]),
+    AngularTourModule.forRoot(),
   ],
   providers: [PhotoService],
   bootstrap: [AppComponent]

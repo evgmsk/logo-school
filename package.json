@@ -1,6 +1,6 @@
 {
   "name": "distant-study",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -9,7 +9,21 @@
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
-  "private": true,
+  "description": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/evgmsk/"
+  },
+  "engines": {
+    "node": "10.16.3"
+  },
+  "keywords": [
+   
+  ],
+  "author": "evgmsk",
+  "license": "MIT",
+  "homepage": "https://github.com/evgmsk/ngx-tour#readme",
+  "private": false,
   "dependencies": {
     "@angular/animations": "~8.1.2",
     "@angular/common": "~8.1.2",
@@ -23,8 +37,6 @@
     "@ngrx/router-store": "^8.3.0",
     "@ngrx/store": "^8.1.0",
     "@ngrx/store-devtools": "^8.3.0",
-    "ngrx": "^2.0.1",
-    "rxjs": "^6.5.2",
     "tslib": "^1.9.0",
     "web-animations-js": "^2.3.2",
     "zone.js": "^0.10.2"

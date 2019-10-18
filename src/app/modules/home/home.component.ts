@@ -25,13 +25,11 @@ import {
            offset: 0,
          }),
          style({
-           //marginRight: '50px',
            transform: 'translateX(-25px)',
            opacity: .5,
            offset: 0.4,
          }),
          style({
-           //marginRight: '15px',
           transform: 'translateX(-10px)',
            opacity: .5,
            offset: 0.7,
@@ -44,7 +42,7 @@ import {
          })
       ])))
     ])
-  ]        
+  ]
 })
 export class HomeComponent implements OnInit {
   pageState = 'init'
