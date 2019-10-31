@@ -57,7 +57,7 @@ export function courseReducers(state = InitialState.courses, action: actions.Cou
       })];
     case(AT.SET_STAFF):
       const course = {...state.filter(x => x.id === action.payload.id)[0]};
-      course['staff'] = action.payload.staff;
+      course.staff = action.payload.staff;
       return [
         ...state.filter(x => x.id !== action.payload.id), course
       ];

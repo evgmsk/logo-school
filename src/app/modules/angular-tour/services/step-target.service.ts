@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {BehaviorSubject, Observable} from 'rxjs';
 
-export interface StepSizeInterface {
+export interface StepSizeI {
   top: number;
   left: number;
   bottom: number;
@@ -39,7 +39,7 @@ export class StepTargetService {
     return {top, left, bottom, right, width, height, pageHeight};
   }
 
-  public addPaddingToTarget(target: StepSizeInterface, size: number[]): StepSizeInterface {
+  public resizeTarget(target: StepSizeI, size: number[]): StepSizeI {
     target.left -= size[0];
     target.right += size[0];
     target.top -= size[1] || size[0];
@@ -53,6 +53,7 @@ export class StepTargetService {
       return this.targetExist$;
   }
   public setTargetSubject(value: {stepName: string, target: Element}): void {
+    console.log('exist', value);
     this.targetExist$.next(value);
   }
 }

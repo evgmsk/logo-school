@@ -11,6 +11,7 @@ export class SelectCourse implements Action {
   }
 }
 
+
 export class SetStaff implements Action {
   readonly type = AT.SET_STAFF;
   constructor(public payload: {id: string, staff: PersonCard[]}) {

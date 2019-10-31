@@ -1,13 +1,88 @@
 $bg-color: rgba(70, 110, 110, .5);
 $font-color: rgba(50 ,100, 110, .8);
+@mixin arrow($pos: 'down', $width: .4rem, $color: white, $offset: 1rem) {
+    content: '';
+    width: 0;
+    height: 0;
+    position: absolute;
+    @if $pos == 'right' {
+        border-right: $width solid $color;
+        border-top: $width solid transparent;
+        border-bottom: $width solid transparent;
+        left: -$width;
+        top: $offset;
+    } @else if $pos == 'left' {
+        border-left: $width solid $color;
+        border-top: $width solid transparent;
+        border-bottom: $width solid transparent;
+        right: -$width;
+        top: $offset;
+    } @else if $pos == 'down' {
+        border-bottom: $width solid $color;
+        border-left: $width solid transparent;
+        border-right: $width solid transparent;
+        top: -$width;
+        right: 45%;
+    } @else if $pos == 'top' {
+        border-top: $width solid $color;
+        border-left: $width solid transparent;
+        border-right: $width solid transparent;
+        bottom: -$width;
+        right: 45%;
+    }
+            
+}
 
-
+.tour-step-wrapper {
+    &.fade-on .tour-step-modal{
+        opacity: 0;
+    }
+    &:not(.animation-on) .tour-step-modal {
+        animation: fade .4s ease-in-out;
+    }
+    &.pos-down {
+        &.animation-on .tour-step-modal {
+            animation: stepDown .4s ease-in-out;
+        }
+        &.with-arrow .tour-step-modal::after {
+           @include arrow('down')
+        }
+    }
+    &.pos-top {
+        &.animation-on .tour-step-modal {
+            animation: stepTop .4s ease-in-out;
+        }
+        &.with-arrow .tour-step-modal::after {
+            @include arrow('top')
+        }
+    }
+    &.pos-left {
+        &.animation-on .tour-step-modal {
+            animation: stepLeft .4s ease-in-out;
+        }
+        &.with-arrow .tour-step-modal::after {
+            @include arrow('left')
+        }
+    }
+    &.pos-right {
+        &.animation-on .tour-step-modal {
+            animation: stepRight .4s ease-in-out;
+        }
+        &.with-arrow .tour-step-modal::after {
+            @include arrow('right');
+        }
+    }
+    &.pos-center {
+        &.animation-on .tour-step-modal {
+            animation: fade .4s ease-in-out;
+        }
+    }
+}
 .tour-step-modal {
     background: white;
     position: absolute;
     min-width: 200px;
     min-height:150px;
-    //border: solid 3px $font-color;
     border-radius: 4px;
     box-shadow: 0 0 12px 4px rgba(0, 0, 0, 0.55);
     color: $font-color;
@@ -69,18 +144,53 @@ $font-color: rgba(50 ,100, 110, .8);
         width: 100%;
     }
 }
-:host {
-    &.with-arrow-down {
-        .tour-step-modal::after {
-            content: '';
-            width: 0;
-            height: 0;
-            border-bottom: .4rem solid #ffffff;
-            border-left: .4rem solid transparent;
-            border-right: .4rem solid transparent;
-            position: absolute;
-            top: -.4rem;
-            right: 1rem;
-        }
+
+@keyframes fade {
+    0% {
+        opacity: 0;
+    }
+    100% { 
+        opacity: 1;
     }
 }
+@keyframes stepDown {
+    0% {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+    100% { 
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+@keyframes stepLeft {
+    0% {
+        transform: translateX(-30px);
+        opacity: 0;
+    }
+    100% { 
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+@keyframes stepRight {
+    0% {
+        transform: translateX(30px);
+        opacity: 0;
+    }
+    100% { 
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+@keyframes stepTop {
+    0% {
+        transform: translateY(-30px);
+        opacity: 0;
+    }
+    100% { 
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+

@@ -1,16 +1,23 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import {Subscription} from 'rxjs';
 
-// import {TourService2, TourStepInterface} from '../../../common/ng-tour.service2';
-import {TourService, TourStepInterface} from '../../angular-tour/services/tour.service';
+import {TourService, TourStepI, StepOptionsI} from '../../angular-tour/services/tour.service';
 
-const steps: TourStepInterface[] = [
-  {stepName: 'first', route: 'home'},
-  {stepName: 'second', route: 'courses'},
-  {stepName: 'third', route: 'courses/WAUQDI'},
+const steps: TourStepI[] = [
+  {stepName: 'first', route: 'home', options: {}},
+  {stepName: 'second', route: 'courses', options: {animatedStep: false, smoothScroll: true}},
+  {
+    stepName: 'third',
+    route: 'courses/WAUQDI',
+    options: { placement: 'down', stepTargetResize: [5] }},
   {stepName: 'fourth', route: 'home'},
-  {stepName: 'fifth', route: 'home'},
-]
+  {stepName: 'fifth', route: 'home', options: { placement: 'center', smoothScroll: true, stepTargetResize: [5] }},
+];
+const tourOptions: StepOptionsI = {
+  smoothScroll: false,
+  animatedStep: true,
+  placement: 'top',
+  customTemplate: false
+};
 
 @Component({
   selector: 'app-about',
@@ -18,21 +25,16 @@ const steps: TourStepInterface[] = [
   styleUrls: ['./home-about.component.scss']
 })
 export class HomeAboutComponent implements OnInit, OnDestroy {
-  subscription: Subscription;
   constructor(private tour: TourService) {
-    // console.log(this.tour.id)
   }
 
   ngOnInit() {
-    // if (!this.tour.getTourStatus())
-    // this.tour.startTour(steps);
   }
   ngOnDestroy() {
-
   }
   onStartTour() {
     if (!this.tour.getTourStatus()) {
-      this.tour.startTour({steps});
+      this.tour.startTour({steps, tourOptions});
     }
   }
 }

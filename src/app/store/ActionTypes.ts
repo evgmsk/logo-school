@@ -10,4 +10,4 @@ export const REMOVE_FROM_CART = 'REMOVE_FROM_CART';
 export const AUTHORIZED = 'AUTHORIZED';
 export const SET_TOKEN = 'SET_TOKEN';
 export const SET_STAFF = 'SET_STAFF';
-
+export const SET_STAFF_PHOTOS = 'SET_STAFF_PHOTOS';

@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewEncapsulation, OnDestroy, Input } from '@angular/core';
 
-import {NavService} from '../../../../services/nav.service';
 import {Route} from '../../../../interfaces/route.interface';
 
 @Component({
@@ -9,25 +8,8 @@ import {Route} from '../../../../interfaces/route.interface';
   styleUrls: ['./sub-menu.component.scss'],
   encapsulation: ViewEncapsulation.None,
 })
-export class SubMenuComponent implements OnInit, OnDestroy {
-  dropdownOpen = false;
-  subscription: any;
+export class SubMenuComponent {
   @Input() routes: Route[];
-  constructor(private service: NavService ) {
-  }
-
-  ngOnInit() {
-    this.subscription = this.service.onStateChange.subscribe(state => {
-      this.dropdownOpen = state;
-    });
-  }
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
-  }
-  openSubMenu() {
-    this.service.onOpenDropdown();
-  }
-  onSelectMenuItem() {
-    this.service.onCloseDropdown();
+  constructor() {
   }
 }

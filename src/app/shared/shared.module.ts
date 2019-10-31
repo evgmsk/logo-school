@@ -8,8 +8,6 @@ import { ShortDescriptionPipe } from '../pipes/short-description.pipe';
 import { MediaCardComponent } from './media-card/media-card.component';
 import { PersonCardComponent } from './person-card/person-card.component';
 import { DropdownDirective } from './dropdown.directive';
-// import { TourStepDirective } from './tour-step.directive';
-// import {TourStepComponent} from './ng-tour-step2/ng-tour-step.component';
 
 @NgModule({
   declarations: [
@@ -19,9 +17,7 @@ import { DropdownDirective } from './dropdown.directive';
     ShortDescriptionPipe,
     PersonCardComponent,
     DropdownDirective,
-   // TourStepDirective,
-   // TourStepComponent,
-    ],
+  ],
   imports: [
     CommonModule,
     RouterModule
@@ -32,8 +28,6 @@ import { DropdownDirective } from './dropdown.directive';
     RouterModule,
     PersonCardComponent,
     DropdownDirective,
-    // TourStepDirective,
-    // TourStepComponent,
-    ]
+  ]
 })
 export class SharedModule { }

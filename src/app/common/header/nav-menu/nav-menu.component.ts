@@ -1,7 +1,5 @@
-import { Component, OnInit, ViewEncapsulation, Input, OnDestroy } from '@angular/core';
-
-import {Route, Routes} from '../../../interfaces/route.interface';
-import {NavService} from '../../../services/nav.service';
+import { Component, OnInit, ViewEncapsulation, Input} from '@angular/core';
+import {Routes} from '../../../interfaces/route.interface';
 
 @Component({
   selector: 'app-nav-menu',
@@ -9,27 +7,12 @@ import {NavService} from '../../../services/nav.service';
   styleUrls: ['./nav-menu.component.scss'],
   encapsulation: ViewEncapsulation.None,
 })
-export class NavMenuComponent implements OnInit, OnDestroy {
-  dropdownOpen = false;
-  subscription: any;
-  routes = Routes;
+export class NavMenuComponent implements OnInit {
   @Input() className: string;
-  constructor(private sevice: NavService) {
+  routes = Routes;
+  constructor() {
   }
 
   ngOnInit() {
-    // this.subscription = this.sevice.onStateChange.subscribe((state: boolean) => {
-    //     this.dropdownOpen = state;
-    //   }
-    // );
-  }
-  ngOnDestroy() {
-    // this.subscription.unsubscribe();
-  }
-  openSubMenu() {
-   // this.sevice.onOpenDropdown();
-  }
-  onClick() {
-    // this.sevice.onCloseDropdown();
   }
 }
