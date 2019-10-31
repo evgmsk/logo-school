@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {RouterModule} from '@angular/router';
+// import { StoreRouterConnectingModule } from '@ngrx/router-store';
+
 import {AngularTourModule} from '../angular-tour/angular-tour.module';
 
 import {CoursesComponent} from './courses.component';

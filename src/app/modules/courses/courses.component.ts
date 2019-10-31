@@ -6,7 +6,6 @@ import {map} from 'rxjs/operators';
 import {
   transition,
   trigger,
-  query,
   style,
   animate,
   keyframes
@@ -29,13 +28,13 @@ import {CourseType} from '../../interfaces/course.interface';
           offset: 0,
         }),
         style({
-          //marginRight: '50px',
+          // marginRight: '50px',
           transform: 'translateX(-25px)',
           opacity: .5,
           offset: 0.4,
         }),
         style({
-          //marginRight: '15px',
+          // marginRight: '15px',
          transform: 'translateX(-10px)',
           opacity: .5,
           offset: 0.7,
@@ -48,7 +47,7 @@ import {CourseType} from '../../interfaces/course.interface';
         })
       ])))
     ])
-  ]        
+  ]
 })
 export class CoursesComponent implements OnInit {
   pageState = 'init';
@@ -58,11 +57,6 @@ export class CoursesComponent implements OnInit {
               private router: Router) { }
 
   ngOnInit() {
-    this.courses = this.store.select('courses').pipe(
-      map((courses => courses.map((c, i) => {
-        c.path = `/courses/${c.id}`;
-        return c;
-      })))
-    );
+    this.courses = this.store.select('courses');
   }
 }

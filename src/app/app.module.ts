@@ -15,8 +15,9 @@ import { ContactsComponent } from './modules/contacts/contacts.component';
 import { PagesComponent } from './modules/pages/pages.component';
 import {CoreModule} from './common/core.module';
 import {HomeModule} from './modules/home/home.module';
+import {CoursesModule} from './modules/courses/courses.module';
 import {SharedModule} from './shared/shared.module';
-import {PhotoService} from './services/photo.service';
+import {StaffService} from './services/staff.service';
 import {PhotoEffect} from './store/app.effects';
 import {reducers} from './store/app.reducers';
 
@@ -38,6 +39,7 @@ import {reducers} from './store/app.reducers';
     CoreModule,
     HttpClientModule,
     HomeModule,
+    // CoursesModule,
     StoreModule.forRoot(reducers),
     AppRoutingModule,
     StoreRouterConnectingModule.forRoot(),
@@ -45,7 +47,7 @@ import {reducers} from './store/app.reducers';
     EffectsModule.forRoot([PhotoEffect]),
     AngularTourModule.forRoot(),
   ],
-  providers: [PhotoService],
+  providers: [StaffService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

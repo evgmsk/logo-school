@@ -13,11 +13,11 @@
         [index]="i"
         [className]="'course-card'"
       >
-        <a *ngIf="!i" ngTourStep="second" type="button" class="apply-button" [routerLink]="course.path">
+        <a *ngIf="!i" ngTourStep="second" type="button" class="apply-button" [routerLink]="course.id">
           Apply
           <i class="fa fa-chevron-right"></i>
         </a>
-        <a *ngIf="i" type="button" class="apply-button" [routerLink]="course.path">
+        <a *ngIf="i" type="button" class="apply-button" [routerLink]="course.id">
             Apply
             <i class="fa fa-chevron-right"></i>
         </a>
