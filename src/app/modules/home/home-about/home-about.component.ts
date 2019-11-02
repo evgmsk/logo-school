@@ -1,9 +1,15 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 
-import {TourService, TourStepI, StepOptionsI} from '../../angular-tour/services/tour.service';
+import {TourService, TourStepI, StepOptionsI, TourEventsI} from '../../angular-tour/services/tour.service';
 
 const steps: TourStepI[] = [
-  {stepName: 'first', route: 'home', options: {}},
+  {
+    stepName: 'first',
+    route: 'home',
+    title: 'Your tour started',
+    description: 'Almost default settings. Only "top" placement is setted.',
+    options: {}
+  },
   {stepName: 'second', route: 'courses', options: {animatedStep: false, smoothScroll: true}},
   {
     stepName: 'third',
@@ -13,10 +19,15 @@ const steps: TourStepI[] = [
   {stepName: 'fifth', route: 'home', options: { placement: 'center', smoothScroll: true, stepTargetResize: [5] }},
 ];
 const tourOptions: StepOptionsI = {
-  smoothScroll: false,
-  animatedStep: true,
   placement: 'top',
-  customTemplate: false
+  // customTemplate: false,
+};
+const tourEvents: TourEventsI = {
+  // tourStart: ({tour}) => console.log(tour),
+  // next: ({step}) => console.log(step),
+  // prev: ({step}) => console.log(step),
+  // tourBreak: ({step}) => console.log(step),
+   tourEnd: ({step}) => console.log(step),
 };
 
 @Component({
@@ -34,7 +45,7 @@ export class HomeAboutComponent implements OnInit, OnDestroy {
   }
   onStartTour() {
     if (!this.tour.getTourStatus()) {
-      this.tour.startTour({steps, tourOptions});
+      this.tour.startTour({steps, tourOptions, tourEvents});
     }
   }
 }

@@ -2,7 +2,7 @@ import {Action, createAction, props} from '@ngrx/store';
 
 import * as AT from './ActionTypes';
 import {StatBanner} from '../interfaces/stat-banner.interface';
-import {PersonCard} from '../interfaces/person-card.interface'
+import {PersonCard} from '../interfaces/person-card.interface';
 
 
 export class SelectCourse implements Action {

@@ -5,7 +5,9 @@ import { Component,
   PLATFORM_ID,
   OnDestroy,
   ViewEncapsulation,
-  ElementRef
+  ElementRef,
+  Output,
+  EventEmitter,
 } from '@angular/core';
 import {isPlatformBrowser} from '@angular/common';
 import {Observable, Subject} from 'rxjs';
@@ -32,20 +34,17 @@ export class TourStepComponent implements OnInit, OnDestroy, TourHandlersI {
   target: StepSizeI;
   currentStep: TourStepI = null;
   step$: Observable<TourStepI> = null;
-  stepNumber: number;
-  total?: number;
-  first?: boolean;
-  last?: boolean;
   isBrowser: boolean;
   onDestroy = new Subject<any>();
   timeouts: any[] = [];
   stepModalPosition: {top?: number, left?: number, right?: number, bottom?: number};
-  modalMaxHeight = '30vh';
-  modalMaxWidth = '30vw';
-  modalMinHeight = 180;
-  modalMinWidth = 200;
   modalHeight: number;
   targetBackground: string;
+  @Output() next: EventEmitter<any> = new EventEmitter();
+  @Output() prev: EventEmitter<any> = new EventEmitter();
+  @Output() done: EventEmitter<any> = new EventEmitter();
+  @Output() break: EventEmitter<any> = new EventEmitter();
+
   constructor(
     private readonly tourService: TourService,
     private readonly stepTargetService: StepTargetService,
@@ -88,7 +87,6 @@ export class TourStepComponent implements OnInit, OnDestroy, TourHandlersI {
           this.targetElement = step.target;
           this.currentStep = this.tourService.getStepByName(step.stepName);
           this.saveStepData(this.currentStep);
-          console.log(this.currentStep)
           this.saveTarget(step.target);
           return this.currentStep;
         }
@@ -107,17 +105,14 @@ export class TourStepComponent implements OnInit, OnDestroy, TourHandlersI {
     }
     const delay = this.tourService.getStepByName(step).options.delay;
     const target = document.querySelector(`[ngtourstep=${step}]`);
-    if (target) {
-      console.log(this.elem.nativeElement.childNodes[1].childNodes[3].childNodes.length);
-    }
     if (times && this.tourService.isRouteChanged() && !target) {
       this.timeouts[this.timeouts.length] = setTimeout(() => this.checkTarget(step, times - 1), delay);
     } else if (!target) {
       console.warn(`Target is missed for step ${step}`);
       if (this.tourService.getStepByName(step).options.continueIfTargetAbsent) {
         const index = this.tourService.getStepByName(step).index + 1;
-        if (index < this.total) {
-            this.tourService.initStep(index);
+        if (index < this.tourService.getTotal()) {
+            this.tourService.nextStep();
         } else {
           console.warn(`The tour is stopped because of no targets is found  for step ${step} and next ones`);
           this.tourService.stopTour();
@@ -146,10 +141,6 @@ export class TourStepComponent implements OnInit, OnDestroy, TourHandlersI {
   saveStepData(step: TourStepI): void {
     this.resetClasses();
     this.targetBackground = 'transparent';
-    this.stepNumber = step.index + 1;
-    this.total = this.tourService.getTotal();
-    this.first = step.index === 0;
-    this.last = step.index === this.total - 1;
   }
   defineStepPlacement() {
     const modal = document.querySelector('.tour-step-modal');
@@ -158,27 +149,32 @@ export class TourStepComponent implements OnInit, OnDestroy, TourHandlersI {
       return;
     }
     const modalRect = modal.getBoundingClientRect();
-    this.modalHeight = modalRect.height ? modalRect.height : modalRect.bottom - modalRect.top;
-    const modalWidth = modalRect.width ? modalRect.width : modalRect.right - modalRect.left;
+    this.modalHeight = Math.round(modalRect.height ? modalRect.height : modalRect.bottom - modalRect.top);
+    const modalWidth = Math.round(modalRect.width ? modalRect.width : modalRect.right - modalRect.left);
     const {placement, scrollTo} = this.currentStep.options;
     const {top, bottom, width, left, right} = this.target;
     if (/^down$/i.test(placement)) {
-      this.stepModalPosition = {top: bottom + 20,  left: left - this.modalMinWidth / 2};
+      this.stepModalPosition = {top: bottom + 20, left: Math.round(left - modalWidth / 2)};
     } else if (/^top$/i.test(placement)) {
-      this.stepModalPosition = {top: top  - this.modalHeight - 20, left: left - this.modalMinWidth / 2};
+      this.stepModalPosition = {
+        top: top  - this.modalHeight - 20,
+        left: Math.round(left - modalWidth / 2)
+      };
     } else if (/^left$/i.test(placement)) {
-      this.stepModalPosition = {left: left - this.modalMinWidth - 20, top};
+      this.stepModalPosition = {left: left - modalWidth - 20, top};
     } else if (/^right$/i.test(placement)) {
       this.stepModalPosition = {left: right + width + 20, top};
     } else if (/^center$/i.test(placement)) {
       this.stepModalPosition = {
-        left: window.innerWidth / 2 - modalWidth / 2,
-        top: window.innerHeight / 2 - this.modalHeight / 2 };
+        left: Math.round(window.innerWidth / 2 - modalWidth / 2),
+        top: Math.round(window.innerHeight / 2 - this.modalHeight / 2)
+      };
     }
     if (scrollTo) {
       this.scrollTo();
     }
   }
+
   scrollTo() {
     const {placement, fixed} = this.currentStep.options;
     const left = this.target.left;
@@ -191,16 +187,22 @@ export class TourStepComponent implements OnInit, OnDestroy, TourHandlersI {
     }
   }
   handleClose() {
+    const {index} = this.currentStep;
+    if (this.tourService.getLastStepIndex() < this.tourService.getTotal() - 1) {
+      this.break.emit(index);
+    } else {
+      this.done.emit(index);
+    }
     this.tourService.stopTour();
   }
   handleNext() {
-    if (!this.last) {
-      this.tourService.initStep(this.currentStep.index + 1);
-    }
+    const index = this.currentStep.index + 1;
+    this.tourService.nextStep();
+    this.next.emit(index);
   }
   handlePrev() {
-    if (!this.first) {
-      this.tourService.initStep(this.currentStep.index - 1);
-    }
+    const index = this.currentStep.index - 1;
+    this.tourService.prevStep();
+    this.prev.emit(index);
   }
 }

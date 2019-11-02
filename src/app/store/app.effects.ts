@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import {Store} from '@ngrx/store';
-import { EMPTY, Subject } from 'rxjs';
+import { EMPTY } from 'rxjs';
+import { map, withLatestFrom, catchError } from 'rxjs/operators';
 
-import * as AT from '../store/ActionTypes';
 import {CourseType} from '../interfaces/course.interface';
-import { map, withLatestFrom, catchError, combineLatest, takeUntil } from 'rxjs/operators';
 import { StaffService } from '../services/staff.service';
 import {SetStaff} from './actions';
 

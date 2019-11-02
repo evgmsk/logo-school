@@ -4,5 +4,50 @@
 <app-header ></app-header>
 <router-outlet #outlet='outlet' *ngIfTour></router-outlet>
 <app-footer></app-footer>
-<!-- <ng-tour-step-template ></ng-tour-step-template> -->
+<ng-tour-step-template (next)="onNext($event)" >
+   <div *ngIf="('customTemplate' | tourPipe) && ('tourStarted' | tourPipe)" class="tour-step-modal__content">
+      <div class="tour-step-modal__header">
+         <h3 class="tour-step-modal__title">
+            {{'title' | tourPipe}}
+         </h3>
+         <button class="tour-step-modal__close-button" type="button" tourEvent="close">
+            &times;
+         </button>
+      </div>
+      <div class="tour-step-modal__body">
+         <p class="tour-step-modal__description">
+            {{'description' | tourPipe}}
+         </p>
+      </div>
+      <div class="tour-step-modal__footer">
+         <div *ngIf="!('withoutCounter' | tourPipe)" class="tour-step-modal__counter">
+            {{'index' | tourPipe}} of {{'total' | tourPipe}}
+         </div>
+         <button
+            *ngIf="!('withoutPrev' | tourPipe) && !('first' | tourPipe)" 
+            type="button" 
+            class="btn btn-default tour-step-modal__prev-button"
+            tourEvent="prev"
+         >
+            {{'Prev'}}
+         </button>
+         <button
+            *ngIf="!('last' | tourPipe)"
+            type="button"
+            class="btn btn-default tour-step-modal__next-button"
+            tourEvent="next"  
+         >
+            {{'Next'}}
+         </button>
+         <button
+            *ngIf="('last' | tourPipe)"
+            type="button"
+            class="btn btn-default tour-step-modal__end-button"
+            tourEvent="close"
+         >
+            {{'Done'}}
+         </button>
+      </div>
+   </div>
+</ng-tour-step-template>
 

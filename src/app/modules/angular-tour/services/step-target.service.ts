@@ -8,15 +8,15 @@ export interface StepSizeI {
   right: number;
   height?: number;
   width?: number;
-  pageHeight: number;
+  pageHeight?: number;
 }
 
 @Injectable()
 export class StepTargetService {
   targetExist$ = new BehaviorSubject<{stepName: string, target: Element}>(null);
   constructor() { }
-  maxHeight() {
-    return Math.max(
+  private maxHeight() {
+    return Math.round(Math.max(
       document.body.scrollHeight,
       document.documentElement.scrollHeight,
       document.body.offsetHeight,
@@ -24,17 +24,17 @@ export class StepTargetService {
       document.body.clientHeight,
       document.documentElement.clientHeight,
       window.innerHeight
-    );
+    ));
   }
   public getSizeAndPosition(el: Element) {
     const targetRect = el.getBoundingClientRect();
     const bodyRect = document.body.getBoundingClientRect();
-    const top = targetRect.top - bodyRect.top;
-    const left = targetRect.left - bodyRect.left;
-    const bottom = targetRect.bottom - bodyRect.top;
-    const right = targetRect.left - bodyRect.left;
-    const height = targetRect.height || bottom - top;
-    const width = targetRect.width || right - left;
+    const top = Math.round(targetRect.top - bodyRect.top);
+    const left = Math.round(targetRect.left - bodyRect.left);
+    const bottom = Math.round(targetRect.bottom - bodyRect.top);
+    const right = Math.round(targetRect.left - bodyRect.left);
+    const height = Math.round(targetRect.height || bottom - top);
+    const width = Math.round(targetRect.width || right - left);
     const pageHeight = this.maxHeight();
     return {top, left, bottom, right, width, height, pageHeight};
   }
@@ -53,7 +53,6 @@ export class StepTargetService {
       return this.targetExist$;
   }
   public setTargetSubject(value: {stepName: string, target: Element}): void {
-    console.log('exist', value);
     this.targetExist$.next(value);
   }
 }
