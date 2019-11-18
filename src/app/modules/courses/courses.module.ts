@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import {AngularTourModule} from 'ng3-tour';
 
-import {AngularTourModule} from '../angular-tour/angular-tour.module';
+// import {AngularTourModule} from '../angular-tour/ng-tour.module';
 
 import {CoursesComponent} from './courses.component';
 import { CourseComponent } from './course/course.component';

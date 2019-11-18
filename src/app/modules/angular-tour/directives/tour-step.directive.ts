@@ -6,6 +6,7 @@ import {map, takeUntil} from 'rxjs/operators';
 import {StepTargetService} from '../services/step-target.service';
 import {TourService} from '../services/tour.service';
 
+// @dynamic
 @Directive({
   selector: '[ngTourStep]'
 })
@@ -19,6 +20,7 @@ export class TourStepDirective implements AfterViewInit, OnDestroy {
     private elemRef: ElementRef,
     private readonly tour: TourService,
     private readonly stepTarget: StepTargetService,
+    // @dynamic
     @Inject(PLATFORM_ID) platformId: {}) {
       this.isBrowser = isPlatformBrowser(platformId);
   }

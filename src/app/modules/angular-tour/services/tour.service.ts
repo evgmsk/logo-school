@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {BehaviorSubject, Observable, Subject} from 'rxjs';
+import {BehaviorSubject, Observable} from 'rxjs';
 import {Router} from '@angular/router';
 
 import {StepTargetService} from './step-target.service';
@@ -42,6 +42,7 @@ export interface StepOptionsI {
   continueIfTargetAbsent?: boolean; // init next step if target is not found for current one
   stepTargetResize?: number[]; // change size of a 'window' for step target
   delay?: number; // for the case of the lazily loaded or animated routes
+  autofocus?: boolean;
 }
 
 export const defaultOptions: StepOptionsI = {
@@ -61,10 +62,11 @@ export const defaultOptions: StepOptionsI = {
   animatedStep: true,
   fixed: false,
   backdrop: true,
-  minWidth: '200px',
-  minHeight: '200px',
-  maxWidth: '30vw',
-  maxHeight: '30vh',
+  minWidth: '150px',
+  minHeight: '150px',
+  maxWidth: '400px',
+  maxHeight: '400px',
+  autofocus: true,
 };
 
 export class StepOptions implements StepOptionsI {
@@ -77,7 +79,6 @@ export class StepOptions implements StepOptionsI {
   placement: string;
   arrowToTarget?: boolean;
   backdrop?: boolean;
-  backdropColor?: string;
   animatedStep?: boolean;
   smoothScroll?: boolean;
   scrollTo?: boolean;
@@ -89,6 +90,7 @@ export class StepOptions implements StepOptionsI {
   minHeight?: string;
   maxWidth?: string;
   maxHeight?: string;
+  autofocus?: boolean;
   constructor(options: StepOptionsI = defaultOptions) {
     const {
       className,
@@ -111,6 +113,7 @@ export class StepOptions implements StepOptionsI {
       animatedStep,
       fixed,
       backdrop,
+      autofocus,
     } = options;
     this.className = className;
     this.placement = placement;
@@ -132,36 +135,32 @@ export class StepOptions implements StepOptionsI {
     this.smoothScroll = smoothScroll;
     this.scrollTo = scrollTo;
     this.fixed = fixed;
+    this.autofocus = autofocus;
   }
 }
-export type TourEventI =  (arg: {
+export type TourEvent =  (props: {
   tourEvent: string,
   step?: number | string,
   history?: number[],
-  [propName: string]: any
+  tour?: TourI,
 }) => void;
 
 export interface TourEventsI {
-  tourStart?: TourEventI;
-  tourEnd?: TourEventI;
-  tourBreak?: TourEventI;
-  next?: TourEventI;
-  prev?: TourEventI;
+  tourStart?: TourEvent;
+  tourEnd?: TourEvent;
+  tourBreak?: TourEvent;
+  next?: TourEvent;
+  prev?: TourEvent;
 }
 
+export const defaultTourEvent: TourEvent = (props) => {};
 export const TourDefaultEvents = {
-  tourStart: ({}) => {},
-  tourEnd: ({}) => {},
-  tourBreak: ({}) => {},
-  next: ({}) => {},
-  prev: ({}) => {},
+  tourStart: defaultTourEvent,
+  tourEnd: defaultTourEvent,
+  tourBreak: defaultTourEvent,
+  next: defaultTourEvent,
+  prev: defaultTourEvent,
 };
-
-export interface TourHandlersI {
-  handlePrev(): void;
-  handleNext(): void;
-  handleClose(): void;
-}
 
 @Injectable()
 export class TourService {
@@ -214,8 +213,8 @@ export class TourService {
     this.presets = {...this.presets, ...presets};
   }
 
-  private initStep(step: number): void {
-    const previousStep = this.getHistory() ? this.steps[this.history.slice(-1)[0]] : {route: null};
+  public initStep(step: number): void {
+    const previousStep = this.history.length ? this.steps[this.getLastStepIndex()] : {route: null};
     const currentStep = this.steps[step];
     this.routeChanged = previousStep.route !== currentStep.route;
     this.history.push(step);
@@ -258,7 +257,7 @@ export class TourService {
     return this.steps.length;
   }
 
-  public setTourStatus(status: boolean): void {
+  private setTourStatus(status: boolean): void {
     this.tourStarted = status;
   }
   public getTourStatus() {
@@ -266,7 +265,7 @@ export class TourService {
   }
   public startTour(tour: TourI) {
     const {tourBreak, tourStart, tourEnd, next, prev} = {...TourDefaultEvents, ...tour.tourEvents};
-    tourStart({tourEvent: 'Tour is starting', tour});
+    tourStart({tourEvent: 'Tour start', tour});
     this.tourBreak = tourBreak;
     this.tourEnd = tourEnd;
     this.next = next;
@@ -280,7 +279,7 @@ export class TourService {
     this.initStep(0);
   }
   public getHistory() {
-    return this.history.length;
+    return this.history;
   }
 
   public stopTour() {

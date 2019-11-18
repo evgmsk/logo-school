@@ -8,8 +8,13 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'distant-study';
 
-
+  onBreak(e: Event): void {
+    console.log(e);
+  }
   onNext(e: Event): void {
+    console.log(e);
+  }
+  onDone(e: Event): void {
     console.log(e);
   }
 }

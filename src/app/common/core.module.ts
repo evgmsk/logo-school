@@ -2,7 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import {AngularTourModule} from '../modules/angular-tour/angular-tour.module';
+import {AngularTourModule} from 'ng3-tour';
+// import {AngularTourModule} from '../modules/angular-tour/ng-tour.module';
 
 import {FooterComponent} from './footer/footer.component';
 import {FooterContactsComponent} from './footer/footer-contacts/footer-contacts.component';

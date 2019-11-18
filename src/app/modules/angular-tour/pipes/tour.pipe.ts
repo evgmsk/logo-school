@@ -1,9 +1,8 @@
 import { Pipe, PipeTransform } from '@angular/core';
-// import {StepTargetService} from '../services/step-target.service';
-import {TourStepI, TourService} from '../services/tour.service';
+import {TourService} from '../services/tour.service';
 
 @Pipe({
-  name: 'tourPipe',
+  name: 'tourData',
   pure: false,
 })
 export class TourPipe implements PipeTransform {

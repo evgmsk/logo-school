@@ -13,7 +13,9 @@ import {AboutStatisticComponent} from './about-statistic/about-statistic.compone
 import {AboutStatisticBannerComponent} from './about-statistic/about-statistic-banner/about-statistic-banner.component';
 import {HomeAboutComponent} from './home-about/home-about.component';
 import {VideoSectionComponent} from './video-section/video-section.component';
-import {AngularTourModule} from '../angular-tour/angular-tour.module';
+import {AngularTourModule} from 'ng3-tour';
+
+// import {AngularTourModule} from '../angular-tour/ng-tour.module';
 
 @NgModule({
   declarations: [

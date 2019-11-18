@@ -9,8 +9,9 @@ import {TourRootDirective} from './directives/tour-root.directive';
 import {StepTargetService} from './services/step-target.service';
 import {TourService} from './services/tour.service';
 import {TourPipe} from './pipes/tour.pipe';
-import {TourEventsDirective} from './directives/handle-tour-events.directive';
+import {StepEventsDirective} from './directives/step-events.directive';
 
+// @dynamic
 @NgModule({
   declarations: [
     TourStepBackComponent,
@@ -18,7 +19,7 @@ import {TourEventsDirective} from './directives/handle-tour-events.directive';
     TourStepDirective,
     TourRootDirective,
     TourPipe,
-    TourEventsDirective
+    StepEventsDirective
   ],
   entryComponents: [TourStepComponent],
   imports: [
@@ -31,7 +32,7 @@ import {TourEventsDirective} from './directives/handle-tour-events.directive';
     TourStepDirective,
     TourRootDirective,
     TourPipe,
-    TourEventsDirective
+    StepEventsDirective
   ]
 })
 export class AngularTourModule {

@@ -8,7 +8,7 @@ export interface StepSizeI {
   right: number;
   height?: number;
   width?: number;
-  pageHeight?: number;
+  pageHeight: number;
 }
 
 @Injectable()
