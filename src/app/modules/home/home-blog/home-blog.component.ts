@@ -12,10 +12,12 @@ import {ArticleType} from '../../../interfaces/article.interface';
 })
 export class HomeBlogComponent implements OnInit {
   articles: Observable<ArticleType[]>;
-  constructor(private store: Store<{articlers: ArticleType[]}>) { }
+  constructor(private store: Store<{articles: ArticleType[]}>) { }
 
   ngOnInit() {
     this.articles = this.store.select('articles');
   }
-
+  selectBlog(i, a) {
+    console.log(i, a);
+  }
 }

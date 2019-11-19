@@ -9,7 +9,7 @@
       [className]="'blog-card'"
     >
       <div class="blog-favorite">
-        <button type="button" (click)="selectBlog()">View more <i class="fa chevron-right"></i></button>
+        <button type="button" (click)="selectBlog(i, article)">View more <i class="fa chevron-right"></i></button>
         <p>
           <span><i class="fa fa-heart"></i>{{article.favorites}}</span>
           <span><i class="fa fa-comments-o"></i>{{article.comments.length}}</span>
