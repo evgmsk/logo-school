@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "distant-study": {
+    "logo-school": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,15 +17,14 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/distant-study",
+            "outputPath": "dist/logo-school",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "aot": false,
             "assets": [
-              "src/favicon.ico",
-              "src/assets"
+              "src/favicon.ico"
             ],
             "styles": [
               "src/styles.scss",
@@ -63,18 +62,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "distant-study:build"
+            "browserTarget": "logo-school:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "distant-study:build:production"
+              "browserTarget": "logo-school:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "distant-study:build"
+            "browserTarget": "logo-school:build"
           }
         },
         "test": {
@@ -85,8 +84,7 @@
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
             "assets": [
-              "src/favicon.ico",
-              "src/assets"
+              "src/favicon.ico"
             ],
             "styles": [
               "src/styles.scss"
@@ -111,15 +109,15 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "distant-study:serve"
+            "devServerTarget": "logo-school:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "distant-study:serve:production"
+              "devServerTarget": "logo-school:serve:production"
             }
           }
         }
       }
     }},
-  "defaultProject": "distant-study"
+  "defaultProject": "logo-school"
 }

@@ -3,7 +3,7 @@
   <p class="section-description">some text</p>
   <div class="course-wrapper">
     <app-media-card
-      *ngFor="let course of (cards | async)"
+      *ngFor="let course of (courses | async) let i=index"
       [card]="course"
       [index]="i"
       [className]="'course-card'"

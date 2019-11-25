@@ -13,22 +13,19 @@ import {CourseType} from '../../../interfaces/course.interface';
   encapsulation: ViewEncapsulation.None,
 })
 export class FeaturedCoursesComponent implements OnInit {
-  cards: Observable<CourseType[]>;
+  courses: Observable<CourseType[]>;
   constructor(
     private store: Store<{courses: CourseType[]}>,
     private router: Router
   ) { }
 
   ngOnInit() {
-    this.cards = this.store.select('courses').pipe(
+    this.courses = this.store.select('courses').pipe(
       map((items: CourseType[]) => items.filter(item => item.featured)
         .map(item => {
           item.path = `/courses/${item.id}`;
           return item;
         })));
-  }
-  redirectToCourses(i) {
-    this.router.navigate([`/courses/${i}`]);
   }
   onClick() {
     this.router.navigate(['/courses']);

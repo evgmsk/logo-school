@@ -70,7 +70,7 @@ export function courseReducers(state = InitialState.courses, action: actions.Cou
   }
 }
 
-export const eventReducers = (state = InitialState.events, action: actions.EventActions) => {
+export function eventReducers(state = InitialState.events, action: actions.EventActions) {
   switch (action.type) {
     case(AT.SELECT_EVENT):
       return [

@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewEncapsulation, OnDestroy, Input } from '@angular/core';
 
-import {Route} from '../../../../interfaces/route.interface';
+import {RouteI} from '../../../../interfaces/route.interface';
+// import { Route } from '@angular/router';
 
 @Component({
   selector: 'app-sub-menu',
@@ -9,7 +10,7 @@ import {Route} from '../../../../interfaces/route.interface';
   encapsulation: ViewEncapsulation.None,
 })
 export class SubMenuComponent {
-  @Input() routes: Route[];
+  @Input() routes: RouteI;
   constructor() {
   }
 }

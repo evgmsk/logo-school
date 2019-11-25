@@ -1,7 +1,7 @@
-export interface Route {
+export interface RouteI {
   name: string;
   path?: string;
-  sub_link?: Route[];
+  sub_links?: RouteI[];
 }
 
 export const Routes = [
