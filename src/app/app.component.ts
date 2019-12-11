@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { LOCALE_ID } from '@angular/core';
 
 @Component({
   selector: 'app-root',

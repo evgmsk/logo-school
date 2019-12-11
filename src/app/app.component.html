@@ -4,60 +4,62 @@
 <app-header ></app-header>
 <router-outlet #outlet='outlet' ngIfTour></router-outlet>
 <app-footer></app-footer>
-<ng-tour-step-template (next)="onNext($event)" (done)="onDone($event)">
-   <div *ngIf="('customTemplate' | tourData) && ('tourStarted' | tourData)" class="tour-step-modal__content">
-      <div class="tour-step-modal__header">
-         <h3 class="tour-step-modal__title">
-            {{'title' | tourData}}
-         </h3>
-         <button class="tour-btn-close" type="button" stepEvent="close" (break)="onBreak($event)" (done)="onDone($event)">
-            &times;
-         </button>
-      </div>
-      <div class="tour-step-modal__body">
-         <p class="tour-step-modal__description">
-            {{'description' | tourData}}
-         </p>
-         <p class="tour-step-modal__adds">
-            {{'adds' | tourData}}
-         </p>
-         <p class="tour-step-modal__adds">
-            {{'customData' | tourData}}
-         </p>
-         <p *ngIf="('index' | tourData)===3" class="tour-step-modal__adds"> 
-            StepName of this step is {{'stepName' | tourData}}
-         </p>
-      </div>
-      <div class="tour-step-modal__footer">
-         <div *ngIf="!('withoutCounter' | tourData)" class="tour-step-modal__counter">
-            {{'index' | tourData}} of {{'total' | tourData}}
+<ng-tour-step-template #gg="steps$" tourStepData (next)="onNext($event)" (done)="onDone($event)">
+   <div  class="tour-step-modal__content" *ngIf="gg.steps$ | async as step">
+      <div >
+         <div class="tour-step-modal__header">
+            <h3 class="tour-step-modal__title"> 
+               {{step.title}}
+            </h3>
+            <button class="tour-btn-close" type="button" stepEvent="close" (break)="onBreak($event)" (done)="onDone($event)">
+               &times;
+            </button>
          </div>
-         <button
-            *ngIf="!('withoutPrev' | tourData) && !('first' | tourData)" 
-            type="button" 
-            class="tour-btn"
-            stepEvent="prev"
-         >
-            {{'Prev'}}
-         </button>
-         <button
-            *ngIf="!('last' | tourData)"
-            type="button"
-            class="tour-btn tour-btn-next"
-            stepEvent="next"  
-            (next)="onNext($event)"
-         >
-            {{'Next'}}
-         </button>
-         <button
-            *ngIf="('last' | tourData)"
-            type="button"
-            class="tour-btn tour-btn-done"
-            stepEvent="close"
-            (done)="onDone($event)"
-         >
-            {{'Done'}}
-         </button>
+         <div class="tour-step-modal__body">
+            <p class="tour-step-modal__description">
+               {{step.description}}
+            </p>
+            <p class="tour-step-modal__adds">
+               {{step.adds}}
+            </p>
+            <p class="tour-step-modal__adds">
+               {{step.customData}}
+            </p>
+            <p *ngIf="step.index===3" class="tour-step-modal__adds"> 
+               StepName of this step is {{step.StepName}}
+            </p>
+         </div>
+         <div class="tour-step-modal__footer">
+            <div *ngIf="!step.options.withoutCounter" class="tour-step-modal__counter">
+               {{step.index + 1}} of {{step.total}}
+            </div>
+            <button
+               *ngIf="!step.options.withoutPrev && step.index" 
+               type="button" 
+               class="tour-btn"
+               stepEvent="prev"
+            >
+               {{step.btnCtrls.prev}}
+            </button>
+            <button
+               *ngIf="step.index + 1 !== step.total"
+               type="button"
+               class="tour-btn tour-btn-next"
+               stepEvent="next"  
+               (next)="onNext($event)"
+            >
+               {{step.btnCtrls.next}}
+            </button>
+            <button
+               *ngIf="step.index + 1 === step.total"
+               type="button"
+               class="tour-btn tour-btn-done"
+               stepEvent="close"
+               (done)="onDone($event)"
+            >
+               {{step.btnCtrls.done}}
+            </button>
+         </div>
       </div>
    </div>
 </ng-tour-step-template>
