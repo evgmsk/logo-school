@@ -15,7 +15,7 @@ export class EventsSectionComponent implements OnInit {
   events: Observable<EventType[]>;
   icons: {};
   show: boolean[];
-  @ViewChild('b', {static: false}) b: ElementRef;
+  @ViewChild('b') b: ElementRef;
   constructor(private store: Store<{events: EventType[]}>) { }
 
   ngOnInit() {

@@ -7,7 +7,7 @@ import {NgForm} from '@angular/forms';
   styleUrls: ['./footer-news-letters.component.scss']
 })
 export class FooterNewsLettersComponent implements OnInit {
-  @ViewChild('form', {static: false}) f: NgForm;
+  @ViewChild('form') f: NgForm;
   error = {message: null};
   constructor() { }
 
