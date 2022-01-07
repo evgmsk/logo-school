@@ -2,16 +2,16 @@
   <!-- <router-outlet></router-outlet>
    --> 
 <app-header ></app-header>
-<router-outlet #outlet='outlet' ngIfTour></router-outlet>
+<router-outlet #outlet='outlet'></router-outlet>
 <app-footer></app-footer>
-<ng-tour-step-template #gg="steps$" tourStepData (next)="onNext($event)" (done)="onDone($event)">
-   <div  class="tour-step-modal__content" *ngIf="gg.steps$ | async as step">
+<ng3-tour-template #gg="tour" (next)="onNext($event)" (done)="onDone($event)">
+   <div  class="tour-step-modal__content" *ngIf="gg.currentStep as step">
       <div >
          <div class="tour-step-modal__header">
             <h3 class="tour-step-modal__title"> 
                {{step.title}}
             </h3>
-            <button class="tour-btn-close" type="button" stepEvent="close" (break)="onBreak($event)" (done)="onDone($event)">
+            <button class="tour-btn-close" type="button" modalEvent="close" (break)="onBreak($event)" (done)="onDone($event)">
                &times;
             </button>
          </div>
@@ -26,41 +26,41 @@
                {{step.customData}}
             </p>
             <p *ngIf="step.index===3" class="tour-step-modal__adds"> 
-               StepName of this step is {{step.StepName}}
+               StepName of this step is {{step.stepName}}
             </p>
          </div>
          <div class="tour-step-modal__footer">
-            <div *ngIf="!step.options.withoutCounter" class="tour-step-modal__counter">
+            <div *ngIf="!step.tourModalOptions.withoutCounter" class="tour-step-modal__counter">
                {{step.index + 1}} of {{step.total}}
             </div>
             <button
-               *ngIf="!step.options.withoutPrev && step.index" 
+               *ngIf="!step.tourModalOptions.withoutPrev && step.index" 
                type="button" 
                class="tour-btn"
-               stepEvent="prev"
+               modalEvent="prev"
             >
-               {{step.btnCtrls.prev}}
+               {{step.ctrlBtns.prev}}
             </button>
             <button
                *ngIf="step.index + 1 !== step.total"
                type="button"
                class="tour-btn tour-btn-next"
-               stepEvent="next"  
+               modalEvent="next"  
                (next)="onNext($event)"
             >
-               {{step.btnCtrls.next}}
+               {{step.ctrlBtns.next}}
             </button>
             <button
                *ngIf="step.index + 1 === step.total"
                type="button"
                class="tour-btn tour-btn-done"
-               stepEvent="close"
+               modalEvent="close"
                (done)="onDone($event)"
             >
-               {{step.btnCtrls.done}}
+               {{step.ctrlBtns.done}}
             </button>
          </div>
       </div>
    </div>
-</ng-tour-step-template>
+</ng3-tour-template>
 

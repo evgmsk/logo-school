@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import {AngularTourModule} from 'ng3-tour';
+import {Ng3TourModule} from 'ng3-tour';
 // import {AngularTourModule} from '../modules/angular-tour/ng-tour.module';
 
 import {FooterComponent} from './footer/footer.component';
@@ -38,7 +38,7 @@ import {SharedModule} from '../shared/shared.module';
     RouterModule,
     FormsModule,
     SharedModule,
-    AngularTourModule.forChild(),
+    Ng3TourModule.forChild(),
   ],
   providers: [],
   exports: [

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {AngularTourModule} from 'ng3-tour';
+import {Ng3TourModule} from 'ng3-tour';
 
 // import {AngularTourModule} from '../angular-tour/ng-tour.module';
 
@@ -15,7 +15,7 @@ import {CoursesRoutingModule} from './courses-routing.module';
     CommonModule,
     SharedModule,
     CoursesRoutingModule,
-    AngularTourModule.forChild(),
+    Ng3TourModule.forChild(),
   ],
   exports: [CoursesComponent, CourseComponent]
 })

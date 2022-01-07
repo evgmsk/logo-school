@@ -1,15 +1,44 @@
 import { Component, isDevMode } from '@angular/core';
 
-import {TourService, TourStepI, StepOptionsI, TourEventsI} from 'ng3-tour';
+import {Ng3TourService, TourStep, TourModalProps, BackdropProps, CtrlBtns, TourEventHandlers} from 'ng3-tour';
 // import {TourService, TourStepI, StepOptionsI, TourEventsI} from '../../angular-tour/services/tour.service';
 
-const steps: TourStepI[] = [
-  {
+// const steps: TourStep[] = [
+//   {
+//     stepName: 'first',
+//     route: 'home',
+//     title: 'Your tour started',
+//     description: 'Almost default settings. Only "top" placement is setted.',
+//     options: {withoutCounter: true, backdrop: false}
+//   },
+//   {
+//     stepName: 'second',
+//     route: 'courses',
+//     title: 'Courses Page',
+//     description: 'Lazily loaded',
+//     adds: 'Some adds',
+//     options: {customTemplate: true, smoothScroll: true, themeColor: '#254689', opacity: .9}
+//   },
+//   {
+//     stepName: 'third',
+//     route: 'courses/WAUQDI',
+//     title: {
+//       'en-EN': 'My first feature',
+//       'ru-RU': 'Моя первая фича',
+//       'fr-FR': 'Mon premier long métrage',
+//   },
+//     options: {customTemplate: true, placement: 'down', stepTargetResize: [5] }
+//   },
+//   {stepName: 'fourth', route: 'home', customData: 'Custom Data'},
+//   {stepName: 'fifth', route: 'home', options: { placement: 'center', smoothScroll: true, stepTargetResize: [5], fixed: true }},
+// ];
+const steps2: TourStep[] = [
+  { 
     stepName: 'first',
     route: 'home',
     title: 'Your tour started',
     description: 'Almost default settings. Only "top" placement is setted.',
-    options: {withoutCounter: true, backdrop: false}
+    tourModalOptions: {withoutCounter: true, scrollTo: true, placement: 'right'},
   },
   {
     stepName: 'second',
@@ -17,7 +46,7 @@ const steps: TourStepI[] = [
     title: 'Courses Page',
     description: 'Lazily loaded',
     adds: 'Some adds',
-    options: {customTemplate: true, smoothScroll: true, themeColor: '#254689', opacity: .9}
+    tourModalOptions: {customTemplate: true, placement: 'top'}
   },
   {
     stepName: 'third',
@@ -27,18 +56,14 @@ const steps: TourStepI[] = [
       'ru-RU': 'Моя первая фича',
       'fr-FR': 'Mon premier long métrage',
   },
-    options: {customTemplate: true, placement: 'down', stepTargetResize: [5] }
+    tourModalOptions: {customTemplate: true, placement: 'left'},
+    backdropOptions: {targetWindowResize: [5]}
   },
-  {stepName: 'fourth', route: 'home', customData: 'Custom Data'},
-  {stepName: 'fifth', route: 'home', options: { placement: 'center', smoothScroll: true, stepTargetResize: [5], fixed: true }},
+  {stepName: 'fourth', route: 'home', customData: 'Custom Data', tourModalOptions: { customTemplate: true }},
+  // {stepName: 'fifth', route: 'home', options: { placement: 'center', smoothScroll: true, stepTargetResize: [5], fixed: true }},
 ];
-const tourOptions: StepOptionsI = {
-  placement: 'top',
-  opacity: 0.7,
-  delay: 400,
-  // customTemplate: false,
-};
-const tourEvents: TourEventsI = {
+
+const tourEvents: TourEventHandlers = {
   tourStart: ({tour}) => console.log(tour),
   next: ({step, history}) => console.log(step, history),
   prev: ({step}) => console.log(step),
@@ -52,12 +77,12 @@ const tourEvents: TourEventsI = {
   styleUrls: ['./home-about.component.scss']
 })
 export class HomeAboutComponent {
-  constructor(private tour: TourService) {
+  constructor(private tour: Ng3TourService) {
     console.log(isDevMode())
   }
   onStartTour() {
     if (!this.tour.getTourStatus()) {
-      this.tour.startTour({steps, tourOptions, tourEvents});
+      this.tour.startTour({steps: steps2, tourEvents});
     }
   } 
 }

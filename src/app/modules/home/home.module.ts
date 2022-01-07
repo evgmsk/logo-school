@@ -13,7 +13,7 @@ import {AboutStatisticComponent} from './about-statistic/about-statistic.compone
 import {AboutStatisticBannerComponent} from './about-statistic/about-statistic-banner/about-statistic-banner.component';
 import {HomeAboutComponent} from './home-about/home-about.component';
 import {VideoSectionComponent} from './video-section/video-section.component';
-import {AngularTourModule} from 'ng3-tour';
+import {Ng3TourModule} from 'ng3-tour';
 
 // import {AngularTourModule} from '../angular-tour/ng-tour.module';
 
@@ -33,7 +33,7 @@ import {AngularTourModule} from 'ng3-tour';
   imports: [
     CommonModule,
     SharedModule,
-    AngularTourModule.forChild(),
+    Ng3TourModule.forChild(),
   ],
   exports: [HomeComponent]
 })
