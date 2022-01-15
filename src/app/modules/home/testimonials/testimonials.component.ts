@@ -16,5 +16,6 @@ export class TestimonialsComponent implements OnInit {
 
   ngOnInit() {
     this.testimonials = this.store.select('testimonials');
+    // console.log(this.testimonials)
   }
 }

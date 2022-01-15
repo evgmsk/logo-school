@@ -2,5 +2,6 @@
 export interface Testimonial {
   author: string;
   message: string;
-  [propName: string]: any;
+  currentIndex?: number
+  className?: string
 }

@@ -4,7 +4,7 @@
   </h5>
   <nav class="footer-courses">
     <a
-      *ngFor="let course of (courses | async).slice(0, 7) let i=index"
+      *ngFor="let course of courses | async"
       routerLinkActive="active"
       [routerLink]="course.path"
     >

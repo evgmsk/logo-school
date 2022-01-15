@@ -3,7 +3,7 @@
   <p class="section-description">some text</p>
   <div class="events-wrapper">
     <app-media-card
-      *ngFor="let event of (events | async) let i=index"
+      *ngFor="let event of events | async; index as i"
       [card]="event"
       [index]="i"
       [className]="'event-card'"

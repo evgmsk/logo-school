@@ -10,6 +10,7 @@ export class FooterContactsComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    // console.log('df')
   }
 
 }

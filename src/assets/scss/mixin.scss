@@ -9,7 +9,7 @@
 }
 
 @function pxToRem($size) {
-  $res: $size / 16;
+  $res: calc($size / 16);
   @return #{$res}rem;
 }
 

@@ -9,18 +9,18 @@
     <p class="card-date">
     <span>
       <i class="fa fa-calendar-o"></i>
-      {{card.date | date:'MMMM d yyyy'}}
+      {{props.date | date:'MMMM d yyyy'}}
     </span>
       <span *ngIf="card.author">
       <i class="fa fa-user-o"></i>
-      {{card.author}}
+      {{props.author}}
     </span>
     </p>
     <a class="card-link" routerLink={{card.path}}>
-      <h5 class="card-title">{{card.title}}</h5>
+      <h5 class="card-title">{{props.title}}</h5>
     </a>
 
-    <p *ngIf="card.description" class="card-description">{{card.description | shortDescription:descriptionLength }}</p>
+    <p *ngIf="card.description" class="card-description">{{props.description | shortDescription:descriptionLength }}</p>
     <ng-content></ng-content>
   </div>
 </div>

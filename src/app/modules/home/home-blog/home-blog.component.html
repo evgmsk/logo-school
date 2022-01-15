@@ -3,7 +3,7 @@
   <p class="section-description">Some text</p>
   <div class="blog-article-wrapper">
     <app-media-card
-      *ngFor="let article of (articles | async) let i=index"
+      *ngFor="let article of articles | async; index as i"
       [card]="article"
       [index]="i"
       [className]="'blog-card'"

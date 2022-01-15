@@ -16,6 +16,7 @@ export class AboutStatisticComponent implements OnInit {
 
   ngOnInit() {
     this.schoolStats = this.store.select('schoolStats');
+    // console.log(this.schoolStats)
   }
 
 }

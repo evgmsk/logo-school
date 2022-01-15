@@ -16,8 +16,9 @@ export class HomeBlogComponent implements OnInit {
 
   ngOnInit() {
     this.articles = this.store.select('articles');
+    // console.log(this.articles)
   }
   selectBlog(i, a) {
-    console.log(i, a);
+    // console.log(i, a);
   }
 }

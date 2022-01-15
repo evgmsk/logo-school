@@ -2,7 +2,7 @@
   <h5 class="footer-title">Instagram</h5>
   <div class="photo-wrapper">
     <a
-      *ngFor="let link of instgramLinks let i=index"
+      *ngFor="let link of instgramLinks; index as i"
       href={{link}}
       target="_blank"
       class={{className+i.toString()}}>

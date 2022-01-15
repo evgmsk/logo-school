@@ -22,12 +22,14 @@ export class FeaturedCoursesComponent implements OnInit {
   ngOnInit() {
     this.courses = this.store.select('courses').pipe(
       map((items: CourseType[]) => items.filter(item => item.featured)
-        .map(item => {
-          item.path = `/courses/${item.id}`;
-          return item;
-        })));
+        .map(item => ({
+          ...item, path: `/courses/${item.id}`
+        }))
+      )
+    )
+    // console.log(this.courses)
   }
   onClick() {
-    this.router.navigate(['/courses']);
+    // this.router.navigate(['/courses']);
   }
 }

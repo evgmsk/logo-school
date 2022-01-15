@@ -2,7 +2,7 @@ import {ActionReducerMap} from '@ngrx/store';
 
 import * as AT from './ActionTypes';
 import * as actions from './actions';
-import {InitialState, StateInterface} from './initialState';
+import {InitialState, IState} from './initialState';
 
 export function statReducers(state = InitialState.schoolStats, action: actions.StatActions) {
   switch (action.type) {

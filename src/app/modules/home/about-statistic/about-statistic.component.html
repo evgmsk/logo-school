@@ -4,7 +4,7 @@
   </h2>
   <p class="section-description">Some text</p>
   <div class="stats-banners-wrapper">
-      <app-about-statistic-banner *ngFor="let stat of (schoolStats | async)" [data]="stat">
+      <app-about-statistic-banner *ngFor="let stat of schoolStats | async" [data]="stat">
       </app-about-statistic-banner>
   </div>
   <div class="about-section-bottom">

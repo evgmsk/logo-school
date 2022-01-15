@@ -5,7 +5,7 @@ import {EventType} from '../interfaces/event.interface';
 import {StatBanner} from '../interfaces/stat-banner.interface';
 import {User} from '../interfaces/user.interface';
 
-export interface StateInterface {
+export interface IState {
   schoolStats: StatBanner[];
   courses: CourseType[];
   events: EventType[];
@@ -16,7 +16,7 @@ export interface StateInterface {
   [propName: string]: any;
 }
 
-export const InitialState: StateInterface = {
+export const InitialState: IState = {
   schoolStats: [
     {title: 'graduation', quantity: '90+', icon: 'graduation-cap'},
     {title: 'majors', quantity: '20+', icon: 'briefcase'},

@@ -21,14 +21,14 @@ export class EventsSectionComponent implements OnInit {
   ngOnInit() {
     this.events = this.store.select('events').pipe(
       map(ev => ev.map((e, i) => {
-        e.path = `/events/${i}`;
-        return e;
+        return {...e, path: `/events/${i}`};
       })
     ));
     this.events.subscribe(evs => {
       this.show = new Array(evs.length).fill(false);
     });
     this.icons = {mail: 'fa fa-envelop-o', phone: 'fa fa-phone', facebook: 'fa fa-facebook'};
+    // console.log(this.events)
   }
   onShowDetails(i): void {
     this.show[i] = !this.show[i];

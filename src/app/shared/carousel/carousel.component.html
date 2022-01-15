@@ -1,14 +1,14 @@
 <div class="simple-carousel">
-  <button class="ch-left" type="button" (click)="stepForward()"><i class="fa fa-chevron-left"></i></button>
-  <button class="ch-right" (click)="stepBack()" type="button"><i class="fa fa-chevron-right"></i></button>
-  <app-carousel-item class="carousel-item" [carouselItems]="carouselData"></app-carousel-item>
+  <button class="ch-left" type="button" (click)="stepBack()"><i class="fa fa-chevron-left"></i></button>
+  <button class="ch-right" (click)="stepForward()" type="button"><i class="fa fa-chevron-right"></i></button>
+  <app-carousel-item class="carousel-item" [carouselItems]="carousel"></app-carousel-item>
   <div class="bottom-controls">
     <button
       type="button"
       class="bottom-control"
-      *ngFor="let item of carouselData let i=index"
-      [ngClass]="{current: item.currentIndex==1}"
-      (click)="setCurrent(item.currentIndex, i)"
+      *ngFor="let item of carousel let i=index"
+      [ngClass]="{current: item.currentIndex === 0}"
+      (click)="changeCurrent(item.currentIndex)"
     >
       <span class="control-content">
       </span>

@@ -7,7 +7,7 @@ import {NgForm} from '@angular/forms';
   styleUrls: ['./footer-news-letters.component.scss']
 })
 export class FooterNewsLettersComponent implements OnInit {
-  @ViewChild('form') f: NgForm;
+  @ViewChild('form') f: any;
   error = {message: null};
   constructor() { }
 
@@ -15,7 +15,7 @@ export class FooterNewsLettersComponent implements OnInit {
     this.error.message = null;
   }
   onChange() {
-    console.log('change');
+    // console.log('change');
     if (this.error.message) {
       const valid = /^\w+@\w+\.\w{2,}$/.test(this.f.value.email);
       if (valid) {

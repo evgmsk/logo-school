@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnDestroy } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy, AfterViewInit } from '@angular/core';
 
 import {Testimonial} from '../../interfaces/testimonial.interface';
 
@@ -7,10 +7,11 @@ import {Testimonial} from '../../interfaces/testimonial.interface';
   templateUrl: './carousel.component.html',
   styleUrls: ['./carousel.component.scss']
 })
-export class CarouselComponent implements OnInit, OnDestroy {
+export class CarouselComponent implements AfterViewInit, OnDestroy {
   @Input() carouselData: Testimonial[];
+  carousel: Testimonial[] = [];
   carouselState = {
-    direction: 'forward',
+    forward: true,
     auto_play: true,
     interval: null,
     initialDelay: 3000,
@@ -22,13 +23,12 @@ export class CarouselComponent implements OnInit, OnDestroy {
     this.setIndex = this.setIndex.bind(this);
   }
 
-  ngOnInit() {
+  ngAfterViewInit(): void {
     const length = this.carouselData.length;
-    this.carouselData.forEach((item, i) => {
-      item.currentIndex = (i + 1) % length;
-      item.className = `carousel-item item${item.currentIndex}`;
-    });
-    this.carouselState.timeout = setTimeout(this.runCarousel, 1000);
+    this.carousel = this.carouselData.map((item, i) => ({
+       ...item, currentIndex: i, className: `carousel-item item${i}`
+    }));
+    this.carouselState.timeout = setTimeout(this.runCarousel);
   }
   ngOnDestroy() {
     clearInterval(this.carouselState.interval);
@@ -40,12 +40,12 @@ export class CarouselComponent implements OnInit, OnDestroy {
     }
   }
   setIndex() {
-    this.carouselData.forEach(item => {
-      const length = this.carouselData.length;
-      if (this.carouselState.direction === 'forward') {
-        item.currentIndex = (+item.currentIndex + 1) % length;
+    this.carousel.forEach(item => {
+      const length = this.carousel.length;
+      if (this.carouselState.forward) {
+        item.currentIndex = (item.currentIndex - 1 + length) % length;
       } else {
-        item.currentIndex = ((+item.currentIndex - 1) + length) % length;
+        item.currentIndex =  (item.currentIndex + 1) % length;
       }
       item.className = `carousel-item item${item.currentIndex}`;
       return item;
@@ -56,6 +56,7 @@ export class CarouselComponent implements OnInit, OnDestroy {
     if (this.carouselState.interval) {
       clearInterval(this.carouselState.interval);
     }
+    this.carouselState.forward = true;
     this.setIndex();
   }
   stepBack() {
@@ -63,7 +64,7 @@ export class CarouselComponent implements OnInit, OnDestroy {
     if (this.carouselState.interval) {
       clearInterval(this.carouselState.interval);
     }
-    this.carouselState.direction = 'back';
+    this.carouselState.forward = false;
     this.setIndex();
   }
   onPlay() {
@@ -72,17 +73,18 @@ export class CarouselComponent implements OnInit, OnDestroy {
   onStop() {
     clearInterval(this.carouselState.interval);
   }
-  setCurrent(currentIndex, index) {
+  changeCurrent(currentIndex: number) {
     clearInterval(this.carouselState.interval);
-    let step = 1 - currentIndex;
-    if (step < 0) {
-      this.carouselState.direction = 'back';
+    const halfLength = Math.floor(this.carousel.length / 2)
+    if (!currentIndex) return
+    const min = Math.min(currentIndex, halfLength)
+    if (currentIndex > halfLength) {
+      this.carouselState.forward = false
     } else {
-      this.carouselState.direction = 'forward';
+      this.carouselState.forward = true
     }
-    step = Math.abs(step);
-    for (let i = 0; i < step; i++) {
-      this.setIndex();
+    for (let i= 0; i < min; i++) {
+      this.setIndex()
     }
   }
 }

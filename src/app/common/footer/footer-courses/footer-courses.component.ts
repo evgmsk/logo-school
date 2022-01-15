@@ -23,5 +23,6 @@ export class FooterCoursesComponent implements OnInit {
         return c.map((item, i) => ({name: item.name, path: `/courses/${item.id}`}));
       })
     );
+    // console.log(this.courses)
   }
 }
